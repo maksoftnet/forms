@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Validators\MaxLength" namespace="Jokuf\Form\Validators" name="MaxLength" abstract="false" final="false" start="5" end="17">
+  <file path="/home/jokuf/code/forms/src/Validators" file="MaxLength.php" realpath="/home/jokuf/code/forms/src/Validators/MaxLength.php" size="355" time="2016-11-29T18:02:02+00:00" unixtime="1480442522" sha1="df5c1337fbba44556ca453cffea124c15e116b36" relative="Validators/MaxLength.php"/>
+  <extends full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base"/>
+  <constructor name="__construct" start="7" end="11" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="length" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="__invoke" start="13" end="16" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base">
+    <member name="msg" type="string" default="&quot;&quot;" visibility="public" static="false" line="7"/>
+    <method name="format_size" start="9" end="40" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="bytes" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="init" start="42" end="46" abstract="false" final="false" static="true" visibility="public"/>
+  </parent>
+</class>

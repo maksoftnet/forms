@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Validators\EmailValidator" namespace="Jokuf\Form\Validators" name="EmailValidator" abstract="false" final="false" start="5" end="12">
+  <file path="/home/jokuf/code/forms/src/Validators" file="EmailValidator.php" realpath="/home/jokuf/code/forms/src/Validators/EmailValidator.php" size="265" time="2016-11-29T18:02:02+00:00" unixtime="1480442522" sha1="8860f8e3e93d667f797b7bc2eabf89bcb0ee54d1" relative="Validators/EmailValidator.php"/>
+  <extends full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base"/>
+  <method name="__invoke" start="7" end="11" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="email" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base">
+    <member name="msg" type="string" default="&quot;&quot;" visibility="public" static="false" line="7"/>
+    <method name="format_size" start="9" end="40" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="bytes" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="init" start="42" end="46" abstract="false" final="false" static="true" visibility="public"/>
+  </parent>
+</class>

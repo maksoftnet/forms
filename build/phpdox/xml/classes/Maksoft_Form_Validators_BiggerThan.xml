@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Validators\BiggerThan" namespace="Jokuf\Form\Validators" name="BiggerThan" abstract="false" final="false" start="5" end="18">
+  <file path="/home/jokuf/code/forms/src/Validators" file="BiggerThan.php" realpath="/home/jokuf/code/forms/src/Validators/BiggerThan.php" size="441" time="2016-11-29T18:02:02+00:00" unixtime="1480442522" sha1="ce0a5091fca6e51740d1cd528fe53c21193ebbc7" relative="Validators/BiggerThan.php"/>
+  <extends full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base"/>
+  <constructor name="__construct" start="7" end="11" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="size" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="__invoke" start="13" end="17" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="array" default=""/>
+  </method>
+  <parent full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base">
+    <member name="msg" type="string" default="&quot;&quot;" visibility="public" static="false" line="7"/>
+    <method name="format_size" start="9" end="40" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="bytes" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="init" start="42" end="46" abstract="false" final="false" static="true" visibility="public"/>
+  </parent>
+</class>

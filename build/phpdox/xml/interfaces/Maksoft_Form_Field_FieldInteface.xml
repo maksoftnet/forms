@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Field\FieldInteface" namespace="Jokuf\Form\Field" name="FieldInteface" abstract="false" final="false" start="5" end="16">
+  <file path="/home/jokuf/code/forms/src/Field" file="FieldInteface.php" realpath="/home/jokuf/code/forms/src/Field/FieldInteface.php" size="266" time="2016-11-29T18:15:10+00:00" unixtime="1480443310" sha1="c14f3a45f4a196873a97afcca63604ecd1336579" relative="Field/FieldInteface.php"/>
+  <method name="__toString" start="7" end="7" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="is_valid" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="add_validator" start="11" end="11" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="validator" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="add_validators" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="validator" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="init" start="15" end="15" abstract="false" final="false" static="true" visibility="public"/>
+  <implementors>
+    <class full="Jokuf\Form\Field\Input" namespace="Jokuf\Form\Field" name="Input"/>
+    <class full="Jokuf\Form\Field\Phone" namespace="Jokuf\Form\Field" name="Phone"/>
+    <class full="Jokuf\Form\Field\Date" namespace="Jokuf\Form\Field" name="Date"/>
+    <class full="Jokuf\Form\Field\Password" namespace="Jokuf\Form\Field" name="Password"/>
+    <class full="Jokuf\Form\Field\Submit" namespace="Jokuf\Form\Field" name="Submit"/>
+    <class full="Jokuf\Form\Field\Text" namespace="Jokuf\Form\Field" name="Text"/>
+    <class full="Jokuf\Form\Field\File" namespace="Jokuf\Form\Field" name="File"/>
+    <class full="Jokuf\Form\Field\Checkbox" namespace="Jokuf\Form\Field" name="Checkbox"/>
+    <class full="Jokuf\Form\Field\Select" namespace="Jokuf\Form\Field" name="Select"/>
+    <class full="Jokuf\Form\Field\Hidden" namespace="Jokuf\Form\Field" name="Hidden"/>
+    <class full="Jokuf\Form\Field\Integer" namespace="Jokuf\Form\Field" name="Integer"/>
+    <class full="Jokuf\Form\Field\Datetime" namespace="Jokuf\Form\Field" name="Datetime"/>
+    <class full="Jokuf\Form\Field\RepeatPassword" namespace="Jokuf\Form\Field" name="RepeatPassword"/>
+    <class full="Jokuf\Form\Field\CsrfToken" namespace="Jokuf\Form\Field" name="CsrfToken"/>
+    <class full="Jokuf\Form\Field\Base" namespace="Jokuf\Form\Field" name="Base"/>
+    <class full="Jokuf\Form\Field\Textarea" namespace="Jokuf\Form\Field" name="Textarea"/>
+    <class full="Jokuf\Form\Field\Email" namespace="Jokuf\Form\Field" name="Email"/>
+  </implementors>
+</interface>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="NotEmpty.php">
+    <totals>
+      <lines total="21" comments="0" code="21" executable="6" executed="3" percent="50.00%"/>
+      <methods count="2" tested="1" percent="50.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="NotEmpty" start="5" executable="6" executed="3" crap="6.00">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Jokuf\Form\Validators"/>
+      <method name="__construct" signature="__construct($default=True)" start="7" end="11" crap="2" executable="3" executed="0" coverage="0"/>
+      <method name="__invoke" signature="__invoke($value=null)" start="13" end="18" crap="3" executable="3" executed="3" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="15">
+        <covered by="Validators::test_not_empty"/>
+        <covered by="Validators::test_is_empty"/>
+      </line>
+      <line nr="16">
+        <covered by="Validators::test_is_empty"/>
+      </line>
+      <line nr="17">
+        <covered by="Validators::test_not_empty"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

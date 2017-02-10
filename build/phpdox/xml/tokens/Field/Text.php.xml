@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/jokuf/code/forms/src/Field" file="Text.php" realpath="/home/jokuf/code/forms/src/Field/Text.php" size="398" time="2016-11-29T18:32:43+00:00" unixtime="1480444363" sha1="ada5fb0444b4eee42d78dcfb5fb025453db795fa" relative="Field/Text.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Jokuf</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Form</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Field</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="3"/>
+  <line no="4"/>
+  <line no="5">
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT">  * Class TextInput extends from Input</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT">  *</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT">  * @param  this is type of the input field'</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT">  *</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT">  * @author  Radoslav Yordanov cc@Jokuf.bg&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT">  *</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT">  * @since 1.0</token>
+  </line>
+  <line no="13">
+    <token name="T_DOC_COMMENT">  */</token>
+  </line>
+  <line no="14">
+    <token name="T_CLASS">class</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Text</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_EXTENDS">extends</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Input</token>
+  </line>
+  <line no="15">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="16">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">__construct</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$kwargs</token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="17">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">data</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'type'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'text'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="18">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_STRING">parent</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_STRING">__construct</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$kwargs</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="19">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_RETURN">return</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="20">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="21">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="22"/>
+  <line no="23">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="24"/>
+</source>

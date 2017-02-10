@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Exceptions\ValidationError" namespace="Jokuf\Form\Exceptions" name="ValidationError" abstract="false" final="false" start="5" end="5">
+  <file path="/home/jokuf/code/forms/src/Exceptions" file="ValidationError.php" realpath="/home/jokuf/code/forms/src/Exceptions/ValidationError.php" size="87" time="2016-11-29T18:02:02+00:00" unixtime="1480442522" sha1="b5d63210ada17be1702253d8ee46a405822e4b0b" relative="Exceptions/ValidationError.php"/>
+  <extends full="Exception" namespace="" name="Exception" unresolved="true"/>
+</class>

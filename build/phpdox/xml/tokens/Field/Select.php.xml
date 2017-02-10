@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/jokuf/code/forms/src/Field" file="Select.php" realpath="/home/jokuf/code/forms/src/Field/Select.php" size="1735" time="2016-11-29T18:32:29+00:00" unixtime="1480444349" sha1="8fc196cb6e4ec99fd3c68888d28e141455c1cb0d" relative="Field/Select.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_NAMESPACE">namespace</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Jokuf</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Form</token>
+    <token name="T_NS_SEPARATOR">\</token>
+    <token name="T_STRING">Field</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="3"/>
+  <line no="4"/>
+  <line no="5">
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT">  * Class Select extends from Input</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT">  *</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT">  *</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT">  * @author  Radoslav Yordanov cc@Jokuf.bg&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_DOC_COMMENT">  *</token>
+  </line>
+  <line no="11">
+    <token name="T_DOC_COMMENT">  * @since 1.0</token>
+  </line>
+  <line no="12">
+    <token name="T_DOC_COMMENT">  */</token>
+  </line>
+  <line no="13">
+    <token name="T_CLASS">class</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Select</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_EXTENDS">extends</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">Input</token>
+  </line>
+  <line no="14">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="15">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PRIVATE">private</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$__data</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="16"/>
+  <line no="17">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">__construct</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$kwargs</token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_ARRAY">array</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="18">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_STRING">parent</token>
+    <token name="T_DOUBLE_COLON">::</token>
+    <token name="T_STRING">__construct</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$kwargs</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="19">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_RETURN">return</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="20">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="21"/>
+  <line no="22">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="23">
+    <token name="T_DOC_COMMENT"> * Loops over each attribute of the class</token>
+  </line>
+  <line no="24">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="25">
+    <token name="T_DOC_COMMENT"> * if param is not null or param is not protected e.g. starts with __</token>
+  </line>
+  <line no="26">
+    <token name="T_DOC_COMMENT"> * add to $tmp variable param_name param_value  and creates field</token>
+  </line>
+  <line no="27">
+    <token name="T_DOC_COMMENT"> * For options must be defined method data which return array</token>
+  </line>
+  <line no="28">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="29">
+    <token name="T_DOC_COMMENT"> *</token>
+  </line>
+  <line no="30">
+    <token name="T_DOC_COMMENT"> * @param none</token>
+  </line>
+  <line no="31">
+    <token name="T_DOC_COMMENT"> * @return string</token>
+  </line>
+  <line no="32">
+    <token name="T_DOC_COMMENT"> */</token>
+  </line>
+  <line no="33">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PUBLIC">public</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">__toString</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="34">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="35">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$options</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="36">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"select "</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="37">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_FOREACH">foreach</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">data</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_AS">as</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$instance</token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+  </line>
+  <line no="38">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_IF">if</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">is_array</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="39">
+    <token name="T_WHITESPACE">                </token>
+    <token name="T_VARIABLE">$options</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">parse_options</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">options</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="40">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_ELSE">else</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="41">
+    <token name="T_WHITESPACE">                </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONCAT_EQUAL">.=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">sprintf</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"%s=\"%s\" "</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$instance</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="42">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="43">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_ENDFOREACH">endforeach</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="44">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_RETURN">return</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"    &lt;"</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">" &gt;"</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_STRING">PHP_EOL</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_VARIABLE">$options</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"    &lt;/select&gt;"</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_STRING">PHP_EOL</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="45">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="46"/>
+  <line no="47">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="48">
+    <token name="T_DOC_COMMENT">     * predefine _data property</token>
+  </line>
+  <line no="49">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="50">
+    <token name="T_DOC_COMMENT">     * if param is array predefine _data property else throw ValidationError Exception</token>
+  </line>
+  <line no="51">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="52">
+    <token name="T_DOC_COMMENT">     *</token>
+  </line>
+  <line no="53">
+    <token name="T_DOC_COMMENT">     * @param array</token>
+  </line>
+  <line no="54">
+    <token name="T_DOC_COMMENT">     * @return none</token>
+  </line>
+  <line no="55">
+    <token name="T_DOC_COMMENT">     * @throws ValidationError</token>
+  </line>
+  <line no="56">
+    <token name="T_DOC_COMMENT">     */</token>
+  </line>
+  <line no="57">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PROTECTED">protected</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_FUNCTION">function</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">parse_options</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$arr</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="58">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="59">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="60">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_FOREACH">foreach</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$arr</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_AS">as</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$key</token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_COLON">:</token>
+  </line>
+  <line no="61">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_WHITESPACE">  </token>
+    <token name="T_CONCAT_EQUAL">.=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'     &lt;option '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="62">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_IF">if</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">is_numeric</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="63">
+    <token name="T_WHITESPACE">                </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">value</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_INT_CAST">(int)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">value</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="64">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_IF">if</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$this</token>
+    <token name="T_OBJECT_OPERATOR">-&gt;</token>
+    <token name="T_STRING">value</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_IS_EQUAL">==</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$key</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="65">
+    <token name="T_WHITESPACE">                </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONCAT_EQUAL">.=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'selected '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="66">
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONCAT_EQUAL">.=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'value="'</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_VARIABLE">$key</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'"&gt;'</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&lt;/option&gt;'</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_STRING">PHP_EOL</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="67">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_ENDFOREACH">endforeach</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="68">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_RETURN">return</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$tmp</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="69">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="70"/>
+  <line no="71"/>
+  <line no="72"/>
+  <line no="73">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="74"/>
+  <line no="75">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="76"/>
+</source>

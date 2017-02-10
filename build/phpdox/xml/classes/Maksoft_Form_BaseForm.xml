@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\BaseForm" namespace="Jokuf\Form" name="BaseForm" abstract="false" final="false" start="5" end="172">
+  <file path="/home/jokuf/code/forms/src" file="BaseForm.php" realpath="/home/jokuf/code/forms/src/BaseForm.php" size="4561" time="2016-11-29T18:23:05+00:00" unixtime="1480443785" sha1="b1551550e8fe53056c0a9ef67b4f2e07988a636f" relative="BaseForm.php"/>
+  <member name="_attr" type="array" default="" visibility="public" static="false" line="7"/>
+  <member name="_cleaned_data" type="array" default="" visibility="public" static="false" line="8"/>
+  <member name="_fields" type="array" default="" visibility="private" static="false" line="9"/>
+  <member name="_post" type="array" default="" visibility="protected" static="false" line="10"/>
+  <constructor name="__construct" start="23" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Loops over each element in the defined object variables check if there is some private or protected properties and add all of them in _fields array.">Second Loop check if form_data is not null and iterate over it. If form_data[KEY] is equal to
+some of object variables check if this var is object. If is true add value to object (eg. for validation)</description>
+      <param type="array" variable="$arr"/>
+      <return type="object">
+        <type full="Jokuf\Form\none" namespace="Jokuf\Form" name="none"/>
+      </return>
+    </docblock>
+    <parameter name="post_data" byreference="false" type="{unknown}" default="" constant="null"/>
+  </constructor>
+  <method name="start" start="40" end="48" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="end" start="50" end="53" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="fields" start="55" end="58" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="clean_request" start="60" end="68" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="post_data" byreference="false" type="array"/>
+  </method>
+  <method name="is_valid" start="70" end="77" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="run_validators" start="90" end="102" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Check if every Field in form is valid and if there is custom method of validation check it too">Loops over each element in the object attributes and check if is object if True call is_valid() on object
+for each var try if there is method of validation if is defined such method try to call it.</description>
+      <param type="null"/>
+      <return type="array"/>
+      <throws description="inherited from fields classes" type="object">
+        <type full="Jokuf\Form\ValidationError" namespace="Jokuf\Form" name="ValidationError"/>
+      </throws>
+    </docblock>
+  </method>
+  <method name="__toString" start="110" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return string representation of form"/>
+      <param type="null"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="save" start="121" end="127" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setAction" start="129" end="131" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="url" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getAction" start="133" end="138" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setMethod" start="140" end="142" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="method" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getmethod" start="144" end="146" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setName" start="148" end="150" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getName" start="152" end="157" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setId" start="159" end="161" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getId" start="163" end="166" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getCleanedData" start="168" end="171" abstract="false" final="false" static="false" visibility="public"/>
+  <extenders>
+    <extender full="Jokuf\Form\DivForm" namespace="Jokuf\Form" name="DivForm"/>
+  </extenders>
+</class>

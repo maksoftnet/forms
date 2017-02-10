@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="/home/jokuf/code/forms/src">
+  <namespace name="Jokuf\Form">
+    <class name="BaseForm" src="BaseForm.php" xml="classes/Jokuf_Form_BaseForm.xml"/>
+    <class name="DivForm" src="DivForm.php" xml="classes/Jokuf_Form_DivForm.xml"/>
+  </namespace>
+  <namespace name="Jokuf\Form\Validators">
+    <class name="HasUpperCase" src="Validators/HasUpperCase.php" xml="classes/Jokuf_Form_Validators_HasUpperCase.xml"/>
+    <class name="NotEmpty" src="Validators/NotEmpty.php" xml="classes/Jokuf_Form_Validators_NotEmpty.xml"/>
+    <class name="MaxLength" src="Validators/MaxLength.php" xml="classes/Jokuf_Form_Validators_MaxLength.xml"/>
+    <class name="MinLength" src="Validators/MinLength.php" xml="classes/Jokuf_Form_Validators_MinLength.xml"/>
+    <class name="FileTypeMatch" src="Validators/FileTypeMatch.php" xml="classes/Jokuf_Form_Validators_FileTypeMatch.xml"/>
+    <class name="BiggerThan" src="Validators/BiggerThan.php" xml="classes/Jokuf_Form_Validators_BiggerThan.xml"/>
+    <class name="HasDigit" src="Validators/HasDigit.php" xml="classes/Jokuf_Form_Validators_HasDigit.xml"/>
+    <class name="HasSpecialChars" src="Validators/HasSpecialChars.php" xml="classes/Jokuf_Form_Validators_HasSpecialChars.xml"/>
+    <class name="Integerish" src="Validators/Integerish.php" xml="classes/Jokuf_Form_Validators_Integerish.xml"/>
+    <class name="Base" src="Validators/Base.php" xml="classes/Jokuf_Form_Validators_Base.xml"/>
+    <class name="FileExtensionMatch" src="Validators/FileExtensionMatch.php" xml="classes/Jokuf_Form_Validators_FileExtensionMatch.xml"/>
+    <class name="NotBiggerThan" src="Validators/NotBiggerThan.php" xml="classes/Jokuf_Form_Validators_NotBiggerThan.xml"/>
+    <class name="EmailValidator" src="Validators/EmailValidator.php" xml="classes/Jokuf_Form_Validators_EmailValidator.xml"/>
+  </namespace>
+  <namespace name="Jokuf\Form\Exceptions">
+    <class name="ValidationError" src="Exceptions/ValidationError.php" xml="classes/Jokuf_Form_Exceptions_ValidationError.xml"/>
+  </namespace>
+  <namespace name="Jokuf\Form\Field">
+    <class name="Input" src="Field/Input.php" xml="classes/Jokuf_Form_Field_Input.xml"/>
+    <class name="Phone" src="Field/Phone.php" description="Class TextInput extends from Input" xml="classes/Jokuf_Form_Field_Phone.xml"/>
+    <class name="Date" src="Field/Date.php" xml="classes/Jokuf_Form_Field_Date.xml"/>
+    <class name="Password" src="Field/Password.php" description="Class PasswordInput extends from Input" xml="classes/Jokuf_Form_Field_Password.xml"/>
+    <class name="Submit" src="Field/Submit.php" description="Class Submit extends from Input" xml="classes/Jokuf_Form_Field_Submit.xml"/>
+    <class name="Text" src="Field/Text.php" description="Class TextInput extends from Input" xml="classes/Jokuf_Form_Field_Text.xml"/>
+    <class name="File" src="Field/File.php" description="Class File extends from Input" xml="classes/Jokuf_Form_Field_File.xml"/>
+    <class name="Checkbox" src="Field/Checkbox.php" description="Class TextInput extends from Input" xml="classes/Jokuf_Form_Field_Checkbox.xml"/>
+    <class name="Select" src="Field/Select.php" description="Class Select extends from Input" xml="classes/Jokuf_Form_Field_Select.xml"/>
+    <class name="Hidden" src="Field/Hidden.php" description="Class TextInput extends from Input" xml="classes/Jokuf_Form_Field_Hidden.xml"/>
+    <class name="Integer" src="Field/Integer.php" description="Class TextInput extends from Input" xml="classes/Jokuf_Form_Field_Integer.xml"/>
+    <class name="Datetime" src="Field/Datetime.php" xml="classes/Jokuf_Form_Field_Datetime.xml"/>
+    <class name="RepeatPassword" src="Field/RepeatPassowrd.php" description="Class PasswordInputRepeat extends from Input" xml="classes/Jokuf_Form_Field_RepeatPassword.xml"/>
+    <class name="CsrfToken" src="Field/CsrfToken.php" xml="classes/Jokuf_Form_Field_CsrfToken.xml"/>
+    <class name="Base" src="Field/Base.php" description="This is a summary" xml="classes/Jokuf_Form_Field_Base.xml"/>
+    <class name="Textarea" src="Field/Textarea.php" description="Class Textarea extends from Input" xml="classes/Jokuf_Form_Field_Textarea.xml"/>
+    <class name="Email" src="Field/Email.php" xml="classes/Jokuf_Form_Field_Email.xml"/>
+    <interface name="FieldInteface" src="Field/FieldInteface.php" xml="interfaces/Jokuf_Form_Field_FieldInteface.xml"/>
+  </namespace>
+</index>

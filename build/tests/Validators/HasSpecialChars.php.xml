@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="HasSpecialChars.php">
+    <totals>
+      <lines total="23" comments="0" code="23" executable="7" executed="7" percent="100.00%"/>
+      <methods count="2" tested="2" percent="100.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="1" percent="100.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="HasSpecialChars" start="5" executable="7" executed="7" crap="4">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Jokuf\Form\Validators"/>
+      <method name="__construct" signature="__construct($allowed_chars)" start="7" end="11" crap="1" executable="3" executed="3" coverage="100"/>
+      <method name="__invoke" signature="__invoke($password)" start="13" end="20" crap="3" executable="4" executed="4" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="9">
+        <covered by="Validators::test_has_special_char"/>
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+      <line nr="10">
+        <covered by="Validators::test_has_special_char"/>
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+      <line nr="11">
+        <covered by="Validators::test_has_special_char"/>
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+      <line nr="15">
+        <covered by="Validators::test_has_special_char"/>
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+      <line nr="16">
+        <covered by="Validators::test_has_special_char"/>
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+      <line nr="17">
+        <covered by="Validators::test_has_special_char"/>
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+      <line nr="19">
+        <covered by="Validators::test_hasn_special_char"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>

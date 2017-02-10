@@ -1,0 +1,509 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <project name="/home/jokuf/code/pretty_forms/app/EasyForms">
+    <tests>
+      <test name="Validators::test_not_bigger_than" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_bigger_than" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_smaller_than_given_value" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_bigger_than_no_value" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_file_match" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_file_not_match" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_file_not_match_no_value_provided" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_not_empty" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_is_empty" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_has_digit" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_hasnt_digit" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_has_special_char" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_hasn_special_char" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_has_upper_case_letter" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_hasnt_upper_case_letter" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_max_length_true" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_max_length_false" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_min_length_true" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_min_length_false" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_file_input_field_one_file_csv_true" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_file_input_field_one_file_not_csv_return_exception" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_multiple_files_input_filetype_validation_true" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_multiple_files_input_filetype_validation_expect_exception" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_multiple_files_input_filesize_validator_expect_exception" size="unknown" result="0" status="PASSED"/>
+      <test name="Validators::test_multiple_files_input_filesize_validator_expect_true" size="unknown" result="0" status="PASSED"/>
+    </tests>
+    <directory name="/home/jokuf/code/pretty_forms/app/EasyForms">
+      <totals>
+        <lines total="859" comments="139" code="720" executable="267" executed="38" percent="14.23%"/>
+        <methods count="52" tested="10" percent="19.23%"/>
+        <functions count="0" tested="0" percent=""/>
+        <classes count="24" tested="2" percent="8.33%"/>
+        <traits count="0" tested="0" percent=""/>
+      </totals>
+      <directory name="Exceptions">
+        <totals>
+          <lines total="5" comments="0" code="5" executable="0" executed="0" percent=""/>
+          <methods count="0" tested="0" percent=""/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="1" percent="100.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+        <file name="ValidationError.php" href="Exceptions/ValidationError.php.xml">
+          <totals>
+            <lines total="5" comments="0" code="5" executable="0" executed="0" percent=""/>
+            <methods count="0" tested="0" percent=""/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="1" percent="100.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+      </directory>
+      <file name="ValidationError.php" href="Exceptions/ValidationError.php.xml">
+        <totals>
+          <lines total="5" comments="0" code="5" executable="0" executed="0" percent=""/>
+          <methods count="0" tested="0" percent=""/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="1" percent="100.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <directory name="Fields">
+        <totals>
+          <lines total="453" comments="114" code="339" executable="113" executed="12" percent="10.62%"/>
+          <methods count="20" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="11" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+        <file name="BaseField.php" href="Fields/BaseField.php.xml">
+          <totals>
+            <lines total="109" comments="15" code="94" executable="12" executed="0" percent="0.00%"/>
+            <methods count="2" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="DateTimeField.php" href="Fields/DateTimeField.php.xml">
+          <totals>
+            <lines total="27" comments="9" code="18" executable="7" executed="0" percent="0.00%"/>
+            <methods count="2" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="EmailField.php" href="Fields/EmailField.php.xml">
+          <totals>
+            <lines total="21" comments="0" code="21" executable="9" executed="0" percent="0.00%"/>
+            <methods count="2" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="FileInputField.php" href="Fields/FileInputField.php.xml">
+          <totals>
+            <lines total="60" comments="8" code="52" executable="23" executed="12" percent="52.17%"/>
+            <methods count="3" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="InputField.php" href="Fields/InputField.php.xml">
+          <totals>
+            <lines total="39" comments="11" code="28" executable="7" executed="0" percent="0.00%"/>
+            <methods count="3" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="PasswordField.php" href="Fields/PasswordField.php.xml">
+          <totals>
+            <lines total="22" comments="8" code="14" executable="3" executed="0" percent="0.00%"/>
+            <methods count="1" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="RepeatPasswordField.php" href="Fields/RepeatPasswordField.php.xml">
+          <totals>
+            <lines total="21" comments="8" code="13" executable="3" executed="0" percent="0.00%"/>
+            <methods count="1" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="SelectField.php" href="Fields/SelectField.php.xml">
+          <totals>
+            <lines total="76" comments="29" code="47" executable="27" executed="0" percent="0.00%"/>
+            <methods count="3" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="SubmitButton.php" href="Fields/SubmitButton.php.xml">
+          <totals>
+            <lines total="21" comments="8" code="13" executable="3" executed="0" percent="0.00%"/>
+            <methods count="1" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="TextAreaField.php" href="Fields/TextAreaField.php.xml">
+          <totals>
+            <lines total="35" comments="9" code="26" executable="16" executed="0" percent="0.00%"/>
+            <methods count="1" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="TextField.php" href="Fields/TextField.php.xml">
+          <totals>
+            <lines total="22" comments="9" code="13" executable="3" executed="0" percent="0.00%"/>
+            <methods count="1" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+      </directory>
+      <file name="BaseField.php" href="Fields/BaseField.php.xml">
+        <totals>
+          <lines total="109" comments="15" code="94" executable="12" executed="0" percent="0.00%"/>
+          <methods count="2" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="DateTimeField.php" href="Fields/DateTimeField.php.xml">
+        <totals>
+          <lines total="27" comments="9" code="18" executable="7" executed="0" percent="0.00%"/>
+          <methods count="2" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="EmailField.php" href="Fields/EmailField.php.xml">
+        <totals>
+          <lines total="21" comments="0" code="21" executable="9" executed="0" percent="0.00%"/>
+          <methods count="2" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="FileInputField.php" href="Fields/FileInputField.php.xml">
+        <totals>
+          <lines total="60" comments="8" code="52" executable="23" executed="12" percent="52.17%"/>
+          <methods count="3" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="InputField.php" href="Fields/InputField.php.xml">
+        <totals>
+          <lines total="39" comments="11" code="28" executable="7" executed="0" percent="0.00%"/>
+          <methods count="3" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="PasswordField.php" href="Fields/PasswordField.php.xml">
+        <totals>
+          <lines total="22" comments="8" code="14" executable="3" executed="0" percent="0.00%"/>
+          <methods count="1" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="RepeatPasswordField.php" href="Fields/RepeatPasswordField.php.xml">
+        <totals>
+          <lines total="21" comments="8" code="13" executable="3" executed="0" percent="0.00%"/>
+          <methods count="1" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="SelectField.php" href="Fields/SelectField.php.xml">
+        <totals>
+          <lines total="76" comments="29" code="47" executable="27" executed="0" percent="0.00%"/>
+          <methods count="3" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="SubmitButton.php" href="Fields/SubmitButton.php.xml">
+        <totals>
+          <lines total="21" comments="8" code="13" executable="3" executed="0" percent="0.00%"/>
+          <methods count="1" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="TextAreaField.php" href="Fields/TextAreaField.php.xml">
+        <totals>
+          <lines total="35" comments="9" code="26" executable="16" executed="0" percent="0.00%"/>
+          <methods count="1" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="TextField.php" href="Fields/TextField.php.xml">
+        <totals>
+          <lines total="22" comments="9" code="13" executable="3" executed="0" percent="0.00%"/>
+          <methods count="1" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <directory name="Forms">
+        <totals>
+          <lines total="172" comments="25" code="147" executable="92" executed="0" percent="0.00%"/>
+          <methods count="13" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="2" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+        <file name="DivForm.php" href="Forms/DivForm.php.xml">
+          <totals>
+            <lines total="42" comments="0" code="42" executable="24" executed="0" percent="0.00%"/>
+            <methods count="2" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="Form.php" href="Forms/Form.php.xml">
+          <totals>
+            <lines total="130" comments="25" code="105" executable="68" executed="0" percent="0.00%"/>
+            <methods count="11" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+      </directory>
+      <file name="DivForm.php" href="Forms/DivForm.php.xml">
+        <totals>
+          <lines total="42" comments="0" code="42" executable="24" executed="0" percent="0.00%"/>
+          <methods count="2" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="Form.php" href="Forms/Form.php.xml">
+        <totals>
+          <lines total="130" comments="25" code="105" executable="68" executed="0" percent="0.00%"/>
+          <methods count="11" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <directory name="Validators">
+        <totals>
+          <lines total="229" comments="0" code="229" executable="62" executed="26" percent="41.94%"/>
+          <methods count="19" tested="10" percent="52.63%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="10" tested="1" percent="10.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+        <file name="Base.php" href="Validators/Base.php.xml">
+          <totals>
+            <lines total="39" comments="0" code="39" executable="12" executed="0" percent="0.00%"/>
+            <methods count="1" tested="0" percent="0.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="BiggerThan.php" href="Validators/BiggerThan.php.xml">
+          <totals>
+            <lines total="22" comments="0" code="22" executable="5" executed="2" percent="40.00%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="FileTypeMatch.php" href="Validators/FileTypeMatch.php.xml">
+          <totals>
+            <lines total="20" comments="0" code="20" executable="5" executed="2" percent="40.00%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="HasDigit.php" href="Validators/HasDigit.php.xml">
+          <totals>
+            <lines total="23" comments="0" code="23" executable="7" executed="4" percent="57.14%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="HasSpecialChars.php" href="Validators/HasSpecialChars.php.xml">
+          <totals>
+            <lines total="23" comments="0" code="23" executable="7" executed="7" percent="100.00%"/>
+            <methods count="2" tested="2" percent="100.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="1" percent="100.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="HasUpperCase.php" href="Validators/HasUpperCase.php.xml">
+          <totals>
+            <lines total="23" comments="0" code="23" executable="7" executed="4" percent="57.14%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="MaxLength.php" href="Validators/MaxLength.php.xml">
+          <totals>
+            <lines total="19" comments="0" code="19" executable="4" executed="1" percent="25.00%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="MinLength.php" href="Validators/MinLength.php.xml">
+          <totals>
+            <lines total="19" comments="0" code="19" executable="4" executed="1" percent="25.00%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="NotBiggerThan.php" href="Validators/NotBiggerThan.php.xml">
+          <totals>
+            <lines total="20" comments="0" code="20" executable="5" executed="2" percent="40.00%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+        <file name="NotEmpty.php" href="Validators/NotEmpty.php.xml">
+          <totals>
+            <lines total="21" comments="0" code="21" executable="6" executed="3" percent="50.00%"/>
+            <methods count="2" tested="1" percent="50.00%"/>
+            <functions count="0" tested="0" percent=""/>
+            <classes count="1" tested="0" percent="0.00%"/>
+            <traits count="0" tested="0" percent=""/>
+          </totals>
+        </file>
+      </directory>
+      <file name="Base.php" href="Validators/Base.php.xml">
+        <totals>
+          <lines total="39" comments="0" code="39" executable="12" executed="0" percent="0.00%"/>
+          <methods count="1" tested="0" percent="0.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="BiggerThan.php" href="Validators/BiggerThan.php.xml">
+        <totals>
+          <lines total="22" comments="0" code="22" executable="5" executed="2" percent="40.00%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="FileTypeMatch.php" href="Validators/FileTypeMatch.php.xml">
+        <totals>
+          <lines total="20" comments="0" code="20" executable="5" executed="2" percent="40.00%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="HasDigit.php" href="Validators/HasDigit.php.xml">
+        <totals>
+          <lines total="23" comments="0" code="23" executable="7" executed="4" percent="57.14%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="HasSpecialChars.php" href="Validators/HasSpecialChars.php.xml">
+        <totals>
+          <lines total="23" comments="0" code="23" executable="7" executed="7" percent="100.00%"/>
+          <methods count="2" tested="2" percent="100.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="1" percent="100.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="HasUpperCase.php" href="Validators/HasUpperCase.php.xml">
+        <totals>
+          <lines total="23" comments="0" code="23" executable="7" executed="4" percent="57.14%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="MaxLength.php" href="Validators/MaxLength.php.xml">
+        <totals>
+          <lines total="19" comments="0" code="19" executable="4" executed="1" percent="25.00%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="MinLength.php" href="Validators/MinLength.php.xml">
+        <totals>
+          <lines total="19" comments="0" code="19" executable="4" executed="1" percent="25.00%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="NotBiggerThan.php" href="Validators/NotBiggerThan.php.xml">
+        <totals>
+          <lines total="20" comments="0" code="20" executable="5" executed="2" percent="40.00%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+      <file name="NotEmpty.php" href="Validators/NotEmpty.php.xml">
+        <totals>
+          <lines total="21" comments="0" code="21" executable="6" executed="3" percent="50.00%"/>
+          <methods count="2" tested="1" percent="50.00%"/>
+          <functions count="0" tested="0" percent=""/>
+          <classes count="1" tested="0" percent="0.00%"/>
+          <traits count="0" tested="0" percent=""/>
+        </totals>
+      </file>
+    </directory>
+  </project>
+</phpunit>

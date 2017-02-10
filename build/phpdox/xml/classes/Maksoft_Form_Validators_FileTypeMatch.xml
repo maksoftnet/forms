@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Validators\FileTypeMatch" namespace="Jokuf\Form\Validators" name="FileTypeMatch" abstract="false" final="false" start="5" end="33">
+  <file path="/home/jokuf/code/forms/src/Validators" file="FileTypeMatch.php" realpath="/home/jokuf/code/forms/src/Validators/FileTypeMatch.php" size="732" time="2016-11-29T18:02:02+00:00" unixtime="1480442522" sha1="2a517b7b76605eaaa48dc46913d7f21e7a68b36d" relative="Validators/FileTypeMatch.php"/>
+  <extends full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base"/>
+  <member name="extensions" type="array" default="" visibility="public" static="false" line="7"/>
+  <constructor name="__construct" start="8" end="14" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="add" start="16" end="20" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file_type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="__invoke" start="22" end="32" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="array" default=""/>
+  </method>
+  <parent full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base">
+    <member name="msg" type="string" default="&quot;&quot;" visibility="public" static="false" line="7"/>
+    <method name="format_size" start="9" end="40" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="bytes" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="init" start="42" end="46" abstract="false" final="false" static="true" visibility="public"/>
+  </parent>
+</class>

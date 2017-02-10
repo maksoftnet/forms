@@ -1,0 +1,24 @@
+{
+    "name": "jokuf/forms",
+    "description": "Abstraction over html forms.",
+    "version": "1.0.0",
+    "license": "MIT",
+    "keywords": ["forms", "templating"],
+    "authors": [
+        {
+            "name": "Radoslav Yordanov",
+            "email": "iordanov_@mail.bg"
+        }
+    ],
+    "require": {
+        "paragonie/random_compat": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.2.*"
+    },
+    "autoload": {
+        "psr-4":{
+            "Jokuf\\Form\\": "src/"
+        }
+    }
+}

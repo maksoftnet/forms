@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="SelectField.php">
+    <totals>
+      <lines total="76" comments="29" code="47" executable="27" executed="0" percent="0.00%"/>
+      <methods count="3" tested="0" percent="0.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="SelectField" start="13" executable="27" executed="0" crap="72">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Jokuf\Form\Fields"/>
+      <method name="__construct" signature="__construct($kwargs)" start="18" end="21" crap="2" executable="3" executed="0" coverage="0"/>
+      <method name="__toString" signature="__toString()" start="34" end="46" crap="12" executable="12" executed="0" coverage="0"/>
+      <method name="parse_options" signature="parse_options($arr)" start="58" end="70" crap="20" executable="12" executed="0" coverage="0"/>
+    </class>
+  </file>
+</phpunit>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="BaseField.php">
+    <totals>
+      <lines total="109" comments="15" code="94" executable="12" executed="0" percent="0.00%"/>
+      <methods count="2" tested="0" percent="0.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="BaseField" start="5" executable="12" executed="0" crap="870">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Jokuf\Form\Fields"/>
+      <method name="__construct" signature="__construct(array $kwargs)" start="13" end="25" crap="12" executable="8" executed="0" coverage="0"/>
+      <method name="__toString" signature="__toString()" start="27" end="27" crap="1" executable="0" executed="0" coverage="100"/>
+      <method name="__set" signature="__set($name, $value)" start="29" end="32" crap="1" executable="0" executed="0" coverage="100"/>
+      <method name="__get" signature="__get($name)" start="34" end="40" crap="2" executable="0" executed="0" coverage="100"/>
+      <method name="is_valid" signature="is_valid()" start="42" end="44" crap="1" executable="0" executed="0" coverage="100"/>
+      <method name="run_validators" signature="run_validators($value)" start="46" end="62" crap="4" executable="0" executed="0" coverage="100"/>
+      <method name="add_validators" signature="add_validators($validator)" start="64" end="71" crap="6" executable="4" executed="0" coverage="0"/>
+      <method name="createFieldAttr" signature="createFieldAttr()" start="73" end="86" crap="8" executable="0" executed="0" coverage="100"/>
+      <method name="has_changed" signature="has_changed($data, $initial)" start="88" end="106" crap="7" executable="0" executed="0" coverage="100"/>
+    </class>
+  </file>
+</phpunit>

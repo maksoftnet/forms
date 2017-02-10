@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Field\Datetime" namespace="Jokuf\Form\Field" name="Datetime" abstract="false" final="false" start="5" end="26">
+  <file path="/home/jokuf/code/forms/src/Field" file="Datetime.php" realpath="/home/jokuf/code/forms/src/Field/Datetime.php" size="574" time="2016-11-29T18:31:19+00:00" unixtime="1480444279" sha1="78c209cd2e4ce32f97968cc2e845868244e04bc9" relative="Field/Datetime.php"/>
+  <extends full="Jokuf\Form\Field\Input" namespace="Jokuf\Form\Field" name="Input"/>
+  <constructor name="__construct" start="7" end="11" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="kwargs" byreference="false" type="array" default=""/>
+  </constructor>
+  <method name="is_valid" start="20" end="25" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if DateInput field is valid See constructor of Form class second loop -&gt; form_data"/>
+      <param type="null"/>
+      <return description="today date format dd-mm-YYYY" type="object">
+        <type full="Jokuf\Form\Field\str" namespace="Jokuf\Form\Field" name="str"/>
+      </return>
+    </docblock>
+  </method>
+  <parent full="Jokuf\Form\Field\Input" namespace="Jokuf\Form\Field" name="Input">
+    <extends full="Jokuf\Form\Field\Base" namespace="Jokuf\Form\Field" name="Base"/>
+    <constructor name="__construct" start="10" end="13" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="kwargs" byreference="false" type="array" default=""/>
+    </constructor>
+    <method name="is_valid" start="27" end="33" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Check if given field is valid">Loops over each element in the validators array which
+is callable objects and check state for True</description>
+        <param type="null"/>
+        <return type="null"/>
+        <throws description="if element in array return False or throw ValidationError" type="object">
+          <type full="Jokuf\Form\Exceptions\ValidationError" namespace="Jokuf\Form\Exceptions" name="ValidationError"/>
+        </throws>
+      </docblock>
+    </method>
+    <method name="__toString" start="35" end="38" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+  <parent full="Jokuf\Form\Field\Base" namespace="Jokuf\Form\Field" name="Base">
+    <implements full="Jokuf\Form\Field\FieldInteface" namespace="Jokuf\Form\Field" name="FieldInteface"/>
+    <constant type="{unknown}" name="VALIDATOR_FAIL" value="101"/>
+    <constant type="{unknown}" name="NOT_CALLABLE" value="100"/>
+    <constant type="{unknown}" name="SESSION_NOT_START" value="102"/>
+    <constant type="{unknown}" name="INVALID_CSRF_TOKEN" value="103"/>
+    <constant type="{unknown}" name="INVALID_DATE" value="31"/>
+    <constant type="{unknown}" name="EMPTY_FILE" value="1233"/>
+    <member name="__dict__" visibility="public" static="false" line="15">
+      <docblock>
+        <description compact="@var get all defined vars"/>
+      </docblock>
+    </member>
+    <member name="data" type="array" default="" visibility="protected" static="false" line="22">
+      <docblock>
+        <description compact="@var get all defined vars"/>
+      </docblock>
+    </member>
+    <member name="__default_validators" type="array" default="" visibility="protected" static="false" line="25">
+      <docblock>
+        <description compact="@var get all defined vars"/>
+      </docblock>
+    </member>
+    <constructor name="__construct" start="34" end="45" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="kwargs" byreference="false" type="array"/>
+    </constructor>
+    <method name="__toString" start="47" end="47" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="__set" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="attribute" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__get" start="54" end="57" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="attribute" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__isset" start="59" end="62" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="attribute" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="__unset" start="64" end="67" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="attribute" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="is_valid" start="69" end="71" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="add" start="73" end="77" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="attribute" byreference="false" type="{unknown}"/>
+      <parameter name="value" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="add_validators" start="94" end="101" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="validatorInstance" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="add_validator" start="103" end="110" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="validatorInstance" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="createFieldAttr" start="112" end="126" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="has_changed" start="128" end="146" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="data" byreference="false" type="{unknown}"/>
+      <parameter name="initial" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="Return True if data differs from initial" line="129"/>
+        <comment value="For purposes of seeing weather something has changed, None is the same" line="138"/>
+        <comment xmlns="http://xml.phpdox.net/src" value="as an empty string, if the data or initial value we get is None, replace with ''," line="139"/>
+      </inline>
+    </method>
+    <method name="exist" start="148" end="151" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="attribute" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="getLabel" start="153" end="159" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="init" start="161" end="165" abstract="false" final="false" static="true" visibility="public">
+      <parameter name="kwargs" byreference="false" type="array" default=""/>
+    </method>
+  </parent>
+  <interface full="Jokuf\Form\Field\FieldInteface" namespace="Jokuf\Form\Field" name="FieldInteface">
+    <method name="__toString" start="7" end="7" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="is_valid" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="add_validator" start="11" end="11" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="validator" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="add_validators" start="13" end="13" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="validator" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="init" start="15" end="15" abstract="false" final="false" static="true" visibility="public"/>
+  </interface>
+</class>

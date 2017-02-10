@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="Form.php">
+    <totals>
+      <lines total="130" comments="25" code="105" executable="68" executed="0" percent="0.00%"/>
+      <methods count="11" tested="0" percent="0.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="Form" start="5" executable="68" executed="0" crap="600">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Jokuf\Form\Forms"/>
+      <method name="__construct" signature="__construct($post_data=null)" start="28" end="53" crap="56" executable="24" executed="0" coverage="0"/>
+      <method name="is_valid" signature="is_valid()" start="66" end="78" crap="20" executable="12" executed="0" coverage="0"/>
+      <method name="__toString" signature="__toString()" start="80" end="89" crap="12" executable="9" executed="0" coverage="0"/>
+      <method name="setAction" signature="setAction($url)" start="91" end="93" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="getAction" signature="getAction()" start="95" end="100" crap="6" executable="5" executed="0" coverage="0"/>
+      <method name="setMethod" signature="setMethod($method)" start="102" end="104" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="getmethod" signature="getmethod()" start="106" end="108" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="setName" signature="setName($name)" start="110" end="112" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="getName" signature="getName()" start="114" end="119" crap="6" executable="5" executed="0" coverage="0"/>
+      <method name="setId" signature="setId($id)" start="121" end="123" crap="2" executable="2" executed="0" coverage="0"/>
+      <method name="getId" signature="getId()" start="125" end="128" crap="2" executable="3" executed="0" coverage="0"/>
+    </class>
+  </file>
+</phpunit>

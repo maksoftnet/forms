@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Jokuf\Form\Validators\Base" namespace="Jokuf\Form\Validators" name="Base" abstract="false" final="false" start="5" end="48">
+  <file path="/home/jokuf/code/forms/src/Validators" file="Base.php" realpath="/home/jokuf/code/forms/src/Validators/Base.php" size="972" time="2016-11-29T18:02:02+00:00" unixtime="1480442522" sha1="d89c38dc997987b1e16f79a95ea321d07654c0e4" relative="Validators/Base.php"/>
+  <member name="msg" type="string" default="&quot;&quot;" visibility="public" static="false" line="7"/>
+  <method name="format_size" start="9" end="40" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="bytes" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="init" start="42" end="46" abstract="false" final="false" static="true" visibility="public"/>
+  <extenders>
+    <extender full="Jokuf\Form\Validators\HasUpperCase" namespace="Jokuf\Form\Validators" name="HasUpperCase"/>
+    <extender full="Jokuf\Form\Validators\NotEmpty" namespace="Jokuf\Form\Validators" name="NotEmpty"/>
+    <extender full="Jokuf\Form\Validators\MaxLength" namespace="Jokuf\Form\Validators" name="MaxLength"/>
+    <extender full="Jokuf\Form\Validators\MinLength" namespace="Jokuf\Form\Validators" name="MinLength"/>
+    <extender full="Jokuf\Form\Validators\FileTypeMatch" namespace="Jokuf\Form\Validators" name="FileTypeMatch"/>
+    <extender full="Jokuf\Form\Validators\BiggerThan" namespace="Jokuf\Form\Validators" name="BiggerThan"/>
+    <extender full="Jokuf\Form\Validators\HasDigit" namespace="Jokuf\Form\Validators" name="HasDigit"/>
+    <extender full="Jokuf\Form\Validators\HasSpecialChars" namespace="Jokuf\Form\Validators" name="HasSpecialChars"/>
+    <extender full="Jokuf\Form\Validators\Integerish" namespace="Jokuf\Form\Validators" name="Integerish"/>
+    <extender full="Jokuf\Form\Validators\FileExtensionMatch" namespace="Jokuf\Form\Validators" name="FileExtensionMatch"/>
+    <extender full="Jokuf\Form\Validators\NotBiggerThan" namespace="Jokuf\Form\Validators" name="NotBiggerThan"/>
+    <extender full="Jokuf\Form\Validators\EmailValidator" namespace="Jokuf\Form\Validators" name="EmailValidator"/>
+  </extenders>
+</class>

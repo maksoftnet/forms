@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<phpunit xmlns="http://schema.phpunit.de/coverage/1.0">
+  <file name="FileTypeMatch.php">
+    <totals>
+      <lines total="20" comments="0" code="20" executable="5" executed="2" percent="40.00%"/>
+      <methods count="2" tested="1" percent="50.00%"/>
+      <functions count="0" tested="0" percent=""/>
+      <classes count="1" tested="0" percent="0.00%"/>
+      <traits count="0" tested="0" percent=""/>
+    </totals>
+    <class name="FileTypeMatch" start="5" executable="5" executed="2" crap="4.94">
+      <package full="" name="" sub="" category=""/>
+      <namespace name="Jokuf\Form\Validators"/>
+      <method name="__construct" signature="__construct($type)" start="7" end="11" crap="2" executable="3" executed="0" coverage="0"/>
+      <method name="__invoke" signature="__invoke($file=array())" start="13" end="17" crap="2" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="15">
+        <covered by="Validators::test_file_match"/>
+        <covered by="Validators::test_file_not_match"/>
+        <covered by="Validators::test_file_not_match_no_value_provided"/>
+      </line>
+      <line nr="16">
+        <covered by="Validators::test_file_match"/>
+        <covered by="Validators::test_file_not_match"/>
+      </line>
+    </coverage>
+  </file>
+</phpunit>
