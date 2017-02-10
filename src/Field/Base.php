@@ -83,11 +83,8 @@ abstract class Base implements Field
 
     public function add_validator(Validator $validator)
     {
-        if(is_callable($validator)){
-            $this->__default_validators[] = $validator;
-            return $this;
-        }
-        throw new ValidationError("add_validator method accepts only callables", self::NOT_CALLABLE);
+        $this->__default_validators[] = $validator;
+        return $this;
     }
 
     protected function create_field_attributes()

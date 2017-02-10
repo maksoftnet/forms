@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Validators;
-
+use Jokuf\Form\Exceptions\ValidationError;
 
 class FileTypeMatch extends Base
 {
@@ -22,7 +22,7 @@ class FileTypeMatch extends Base
     public function __invoke($file=array())
     {
         if(func_num_args() == 0){
-            throw new \Exception(__FUNCTION__ .' insufficient parameters supplied',
+            throw new ValidationError(__FUNCTION__ .' insufficient parameters supplied',
                                  Validator::INSUFFICENT_PARAMETERS);
         }
         if(!array_key_exists('type', $file)){ return false; }

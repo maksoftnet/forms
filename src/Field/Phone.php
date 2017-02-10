@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Field;
-
+use Jokuf\Form\Exceptions\ValidationError;
 
  /**
   * Class TextInput extends from Input
@@ -24,7 +24,7 @@ class Phone extends Input
         parent::is_valid();
         preg_match("/^[0-9\/+]{9,16}$/", $this->value, $output);
         if(empty($output)){
-            throw new \Exception("You provide invalid phone number! Try with code/number", 33);
+            throw new ValidationError("You provide invalid phone number! Try with code/number", 33);
         }
         return True;
     }

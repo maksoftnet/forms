@@ -85,7 +85,7 @@ class BaseForm implements \Iterator
     {
         $this->clean_request($this->post);
 
-        foreach($this->cleaned_data as $field_name => $field){
+        foreach($this->fields as $field_name => $field){
             $field->is_valid();
             $custom_validator = sprintf("validate_%s", $field_name);
             if(method_exists($field, $custom_validator)){

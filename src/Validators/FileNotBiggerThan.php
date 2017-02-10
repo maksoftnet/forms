@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Validators;
-
+use Jokuf\Form\Exceptions\ValidationError;
 
 class FileNotBiggerThan extends Base
 {
@@ -13,7 +13,7 @@ class FileNotBiggerThan extends Base
     public function __invoke()
     {
         if(func_num_args() == 0){
-            throw new \Exception(__FUNCTION__ .' insufficient parameters supplied',
+            throw new ValidationError(__FUNCTION__ .' insufficient parameters supplied',
                                  Validator::INSUFFICENT_PARAMETERS);
         }
         $field = func_get_arg(0);
@@ -22,7 +22,7 @@ class FileNotBiggerThan extends Base
                 $i =0;
                 foreach($data->files['size'] as $filesize){
                     if($this->size > $filesize){
-                        throw new \Exception($field->files['name'][$i] . " is bigger than expected size of ". $this->size);
+                        throw new ValidationError($field->files['name'][$i] . " is bigger than expected size of ". $this->size);
                     }
                     $i++;
                 }

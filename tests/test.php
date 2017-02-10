@@ -2,6 +2,7 @@
 require __DIR__ . "/../vendor/autoload.php";
 use \Jokuf\Form\Validators\FileTypeMatch;
 use \Jokuf\Form\Field\Files;
+use \Jokuf\Form\Exceptions\ValidationError;
 
 
 class TestForm extends \Jokuf\Form\DivForm
@@ -53,7 +54,7 @@ class Input extends \Jokuf\Form\DivForm
              ->add("class"   , "form-control")
              ->add("required", True )
              ->add_validator(new Jokuf\Form\Validators\FileTypeMatch("text/csv"));
- 
+
          $this->images = \Jokuf\Form\Field\Filess::init()
              ->add("label"   , "DropImages Here")
              ->add("name"    , "images[]")
@@ -124,6 +125,24 @@ class Validators extends PHPUnit_Framework_TestCase
             ->add("files", $this->file)
             ->add_validator(new Jokuf\Form\Validators\FileBiggerThan(1024));
         $this->assertTrue($file_input_field->is_valid());
+    }
+
+    public function test_mulitple_validators()
+    {
+        $password = Jokuf\Form\Field\Password::init()
+            ->add("label", 'Парола')
+            ->add("value", "admni")
+            ->add("class", 'form-control')
+            ->add_validator(new \Jokuf\Form\Validators\MaxLength(8))
+            ->add_validator(new \Jokuf\Form\Validators\MinLength(5))
+            ->add_validator(new \Jokuf\Form\Validators\HasDigit())
+            ->add_validator(new \Jokuf\Form\Validators\HasUpperCase());
+            try {
+                $password->is_valid();
+            } catch (\Exception $e) {
+            }
+
+            $this->assertTrue(count($password->errors) > 0);
     }
 
     /**
@@ -325,6 +344,7 @@ class Validators extends PHPUnit_Framework_TestCase
 
     /**
      * @covers Jokuf\Form\Validators\HasUpperCase::__invoke
+     * @expectedException \Exception
      */
     public function test_hasnt_upper_case_letter()
     {
@@ -379,7 +399,7 @@ class Validators extends PHPUnit_Framework_TestCase
                                         "size"     => 123213123,
                                         "tmp_name" => "tmp/asdasd/"
                                     ));
-                                  
+
 
         $csv->add_validator(new Jokuf\Form\Validators\FileTypeMatch("text/csv"));
         $this->assertTrue($csv->is_valid());
@@ -503,40 +523,42 @@ class Validators extends PHPUnit_Framework_TestCase
         $images->add_validator($validator);
         $this->assertTrue($images->is_valid());
     }
-
-    public function testRunValidators_on_error()
+    /**
+     * @covers Jokuf\Form\Validators\Password::__invoke
+     * @expectedException \Jokuf\Form\Exceptions\ValidationError
+     */
+    public function test_is_valid_must_throw_ValidationError()
     {
         $this->password->value = 'asda';
-        try{
-            $this->password->is_valid($this->password->value);
-        }catch(Jokuf\Form\Exceptions\ValidationError $e){
-            $class = get_class($e);
-            $this->assertEquals($class, "Jokuf\Form\Exceptions\ValidationError");
-        }
+        $this->password->is_valid();
+        throw new \Exception('asd');
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Password::__invoke
+     */
     public function test_check_that_all_validators_added_to_password_field_are_valid()
     {
-        $password = new Jokuf\Form\Field\Password(
-                        ["name"=>"password", "label"=>'Парола', "class"=>'form-control']
-        );
+        $password = Jokuf\Form\Field\Password::init()
+                        ->add("name", "password")
+                        ->add("label", 'Парола')
+                        ->add("class", 'form-control');
         $password->add_validator(new Jokuf\Form\Validators\MaxLength(8));
-        $password->add_validator(new Jokuf\Form\Validators\MinLength(5));
+        $password->add_validator(new Jokuf\Form\Validators\MinLength(4));
         $password->add_validator(new Jokuf\Form\Validators\HasDigit());
         $password->add_validator(new Jokuf\Form\Validators\HasUpperCase());
         $password->add_validator(new Jokuf\Form\Validators\HasSpecialChars("?!@#$%^&(*)"));
-        $password->value = 'Admn00%';
+        $password->value = 'd5A!k';
         $this->assertEquals($password->is_valid(), True);
     }
-
+    /**
+     * @covers Jokuf\Form\Validators\Password::__invoke
+     * @expectedException Jokuf\Form\Exceptions\ValidationError
+     */
     public function test_check_that_all()
     {
-        try {
-            $this->password->value = '.';
-            $this->password->is_valid();
-        } catch (Exception $e) {
-            $this->assertEquals($e->getCode(), 1);
-        }
+        $this->password->value = '.';
+        $this->password->is_valid();
     }
 
     public function testAddValidators_on_success()
@@ -574,19 +596,31 @@ class Validators extends PHPUnit_Framework_TestCase
         $this->assertTrue($validator("50"));
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Integerish::__invoke
+     * @expectedException Jokuf\Form\Exceptions\ValidationError
+     */
     public function test_validators_integerish_assert_false()
     {
         $validator = new \Jokuf\Form\Validators\Integerish();
-        $this->assertFalse($validator("50sa"));
+        $validator("50sa");
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Integerish::__invoke
+     * @expectedException Jokuf\Form\Exceptions\ValidationError
+     */
     public function test_validators_integerish_float__assert_false()
     {
         $validator = new \Jokuf\Form\Validators\Integerish();
-        $this->assertFalse($validator("1.123"));
-        $this->assertFalse($validator(1.123));
+        $validator("1.123");
+        $validator(1.123);
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Integerish::__invoke
+     * @expectedException Jokuf\Form\Exceptions\ValidationError
+     */
     public function test_DateField_default_validation()
     {
         $date = \Jokuf\Form\Field\Date::init()
@@ -601,34 +635,24 @@ class Validators extends PHPUnit_Framework_TestCase
         $code = 0;
 
         $date->value = "kljsahsadjfas";
-        try{
-            $date->is_valid();
-        } catch(\Exception $e){
-            $code = $e->getCode();
-        }
-        $this->assertEquals(31, $code,
-            "Проверява дали се хвърля ексепшън когато датата е невалидна"
-        );
+        $date->is_valid();
 
         $date->value = "02.02.jsadhsakj";
         $code = 0;
-        try{
-            $date->is_valid();
-        } catch(\Exception $e){
-            $code = $e->getCode();
-        }
-        $this->assertEquals(31, $code,
-            "Проверява дали се хвърля ексепшън когато датата е невалидна"
-        );
-        
+        $date->is_valid();
+        $code = $e->getCode();
+
         $date->value = "2016";
         $code = 0;
         $this->assertEquals(date('Y%m%d',time()), (string) $date->is_valid(),
-            "При въвеждане само на година трябва да върне 
+            "При въвеждане само на година трябва да върне
             днешната дата в предаврително зададеният формат"
         );
     }
-
+    /**
+     * @covers Jokuf\Form\Validators\PhoneField::__invoke
+     * @expectedException Jokuf\Form\Exceptions\ValidationError
+     */
     public function test_PhoneField()
     {
         $phone = new \Jokuf\Form\Field\Phone();
@@ -637,25 +661,14 @@ class Validators extends PHPUnit_Framework_TestCase
 
         $phone->value= "02/846464s6";
         $code = 0;
-        try {
-            $phone->is_valid();
-            echo $phone->value;
-        } catch ( \Exception $e){
-            $code = $e->getCode();
-        }
+        $phone->is_valid();
 
-        $this->assertEquals(33, $code);   
+        $this->assertEquals(33, $code);
 
         $phone->value= "+35902/846464s6";
         $code = 0;
-        try {
-            $phone->is_valid();
-            echo $phone->value;
-        } catch ( \Exception $e){
-            $code = $e->getCode();
-        }
-
-        $this->assertEquals(33, $code);   
+        $phone->is_valid();
+        $this->assertEquals(33, $code);
 
         $phone->value= "+35902/8464646";
         $this->assertTrue($phone->is_valid(), "Валидира номера по регулярен израз и връща True ако е валиден");

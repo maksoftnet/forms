@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Validators;
-
+use Jokuf\Form\Exceptions\ValidationError;
 
 class HasUpperCase extends Base
 {
@@ -10,7 +10,7 @@ class HasUpperCase extends Base
         if(func_num_args() > 0){
             $default = func_get_arg(0);
             if(!is_bool($default)){
-                throw new \Exception("HasDigit takes BOOLEAN argument");
+                throw new ValidationError("HasDigit takes BOOLEAN argument");
             }
         }
         $this->default = $default;
@@ -20,14 +20,16 @@ class HasUpperCase extends Base
     public function __invoke()
     {
         if(func_num_args() == 0){
-            throw new \Exception(__FUNCTION__ .' insufficient parameters supplied', 
+            throw new ValidationError(__FUNCTION__ .' insufficient parameters supplied',
                                  Validator::INSUFFICENT_PARAMETERS);
         }
-        foreach (str_split(func_get_arg(0)) as $char) {
-            if(ctype_upper($char))
-                return True;
+        $string = func_get_arg(0);
+        foreach (str_split($string) as $char) {
+            if(ctype_upper($char)){
+                return true;
+            }
         }
-        return False;
+        throw new ValidationError($this->msg);
     }
 }
 

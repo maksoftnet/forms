@@ -27,13 +27,15 @@ class Input extends Base
     public function is_valid(){
         foreach ($this->__default_validators as $validator){
             try{
-                $validator($this->value);
-            } catch (\Exception $e){
+                if(!$validator($this->data['value'])){
+                    $this->data['errors'][] = $validator->msg;
+                }
+            } catch (ValidationError $e){
                 $this->data['errors'][] = $e->getMessage();
             }
         }
 
-        if(!empty($this->data['errors'])){
+        if(count($this->data['errors']) > 0){
             throw new ValidationError("validation filed" , 1);
         }
 
@@ -42,7 +44,7 @@ class Input extends Base
 
     public function __toString()
     {
-        return "    <".$this->type." ".$this->createFieldAttr().'>'.PHP_EOL;
+        return "    <".$this->type." ".$this->create_field_attributes().'>'.PHP_EOL;
     }
 }
 

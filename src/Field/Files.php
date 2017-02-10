@@ -26,12 +26,12 @@ class Files extends Input
                     $validator($this);
                     continue;
                 }
-            } catch (\Exception $e) {
+            } catch (\Jokuf\Form\Exceptions\ValidationError $e) {
                 $this->data['errors'][] = $e->getMessage();
             }
         }
         if(!empty($this->data['errors'])){
-            throw new \Exception("Validation filed");
+            throw new \Jokuf\Form\Exceptions\ValidationError("Validation filed");
         }
         return True;
     }

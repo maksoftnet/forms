@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Validators;
-
+use Jokuf\Form\Exceptions\ValidationError;
 
 class MaxLength extends Base
 {
@@ -13,7 +13,7 @@ class MaxLength extends Base
     public function __invoke()
     {
         if(func_num_args() == 0){
-            throw new \Exception(__FUNCTION__ .' insufficient parameters supplied',
+            throw new ValidationError(__FUNCTION__ .' insufficient parameters supplied',
                                  Validator::INSUFFICENT_PARAMETERS);
         }
         return strlen(func_get_arg(0)) <= $this->length;

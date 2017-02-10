@@ -2,6 +2,8 @@
 namespace Jokuf\Form\Field;
 
 
+use Jokuf\Form\Exceptions\ValidationError;
+
  /**
   * Class TextInput extends from Input
   *
@@ -38,12 +40,12 @@ class Integer extends Input
     public function is_valid()
     {
         parent::is_valid();
-        
+
         if (!filter_var($this->value, FILTER_VALIDATE_INT) === false) {
             return True;
         }
 
-        throw new \Exception("Невалидни данни", 32);
+        throw new ValidationError("Невалидни данни", 32);
     }
 }
 

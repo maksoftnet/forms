@@ -27,7 +27,7 @@ class Date extends Input
             $this->data['value'] = $date->format($this->data['format']);
             return $this->data['value'];
         } catch (\Exception $e){
-            throw new \Exception(sprintf("Invalid Date[\"%s\"] provided", $this->value), self::INVALID_DATE);
+            throw new \Jokuf\Form\Exceptions\ValidationError(sprintf("Invalid Date[\"%s\"] provided", $this->value), self::INVALID_DATE);
         }
     }
 

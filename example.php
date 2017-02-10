@@ -6,7 +6,7 @@
 session_start();
 #$_SESSION = array();
 
-include 'vendor/autoload.php';
+include __DIR__.'/vendor/autoload.php';
 use \Jokuf\Form\DivForm;
 use \Jokuf\Form\Field\Email;
 use \Jokuf\Form\Field\Password;
@@ -18,40 +18,39 @@ use \Jokuf\Form\Field\Text;
 
 class LoginForm extends DivForm
 {
-    public function __construct($form_data=null)
+    public function __construct($form_data=null, $files_data=null)
     {
-        $this->email = new Email([
-            "label"=>"Въведи Email",
-            "name"=>"email",
-            "class"=>'form-control',
-            "required"=>False ]);
-        $this->password = new Password([
-            "label"=>'Парола',
-            "name"=>"password",
-            "class"=>'form-control']);
-        $this->password->add_validators(new \Jokuf\Form\Validators\MaxLength(8));
-        $this->password->add_validators(new \Jokuf\Form\Validators\MinLength(5));
-        $this->password->add_validators(new \Jokuf\Form\Validators\HasDigit());
-        $this->password->add_validators(new \Jokuf\Form\Validators\HasUpperCase());
-        $this->password23 = new RepeatPassword([
-            "label"=>'Повторете паролata',
-            "name"=>"password23",
-            "class"=>'form-control']);
-        $this->textarea = new Textarea([
-            "name"=>"textarea",
-            "cols"=>50,
-            "rows"=>30,
-            "required"=>false]);
+        $this->email = Email::init()
+            ->add("label", "Въведи Email")
+            ->add("class", 'form-control')
+            ->add("required", False );
+
+        $this->password = Password::init()
+            ->add("label", 'Парола')
+            ->add("class", 'form-control')
+            ->add_validator(new \Jokuf\Form\Validators\MaxLength(8))
+            ->add_validator(new \Jokuf\Form\Validators\MinLength(5))
+            ->add_validator(new \Jokuf\Form\Validators\HasDigit())
+            ->add_validator(new \Jokuf\Form\Validators\HasUpperCase());
+
+        $this->password_repeated = Password::init()
+            ->add("label", 'Повторете паролata')
+            ->add("class", 'form-control');
+
+        $this->textarea = Textarea::init()
+            ->add("cols", 50)
+            ->add("rows", 30);
 
         $this->csrf = \Jokuf\Form\Field\CsrfToken::init();
         $this->submit = new Submit(["class"=>"btn btn-default"]);
-        parent::__construct($form_data);
+        parent::__construct($form_data, $files_data);
     }
 
     public function validate_password($pwd_field)
     {
-        if($this->password->value === $this->password23->value)
+        if($pwd_field->value === $this->password_repeated->value){
             return True;
+        }
         throw new \Jokuf\Form\Exceptions\ValidationError("Password does not match!", 1);
     }
 }
@@ -65,9 +64,8 @@ var_dump($_POST);
         <hr>
         <br>
         <?php
-        $_SERVER['REQUEST_METHOD'] = "POST";
         if($_SERVER['REQUEST_METHOD'] === "POST"):
-            $form = new LoginForm($_POST);
+            $form = new LoginForm($_POST, $_FILES);
             try {
                 $form->is_valid();
                 echo '<div class="alert alert-success" role="alert">Passed validation</div>';
@@ -83,7 +81,7 @@ var_dump($_POST);
             echo $form;
         else:
             $form = new LoginForm();
-            $form->setAction($_SERVER['PHP_SELF']);
+            $form->set_action($_SERVER['PHP_SELF']);
             echo $form;
         endif;
         ?>

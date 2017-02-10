@@ -54,7 +54,7 @@ class CsrfToken extends Input
     public function is_valid()
     {
         if(!isset($_SESSION[self::SESSION_KEY])){
-            throw new \Exception("session not start!", self::SESSION_NOT_START);
+            throw new \Jokuf\Form\Exceptions\ValidationError("session not start!", self::SESSION_NOT_START);
         }
 
         $token = $_SESSION[self::SESSION_KEY];
@@ -62,6 +62,6 @@ class CsrfToken extends Input
             return True;
         }
 
-        throw new \Exception("CSRF Token validation fail", self::INVALID_CSRF_TOKEN);
+        throw new \Jokuf\Form\Exceptions\ValidationError("CSRF Token validation fail", self::INVALID_CSRF_TOKEN);
     }
 }

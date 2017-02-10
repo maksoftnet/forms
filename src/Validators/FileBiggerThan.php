@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Validators;
-
+use Jokuf\Form\Exceptions\ValidationError;
 
 class FileBiggerThan extends Base implements Files
 {
@@ -10,13 +10,13 @@ class FileBiggerThan extends Base implements Files
             throw new \Exception(__FUNCTION__." takes exactly 1 argument");
         }
         $this->size = func_get_arg(0);
-        $this->msg = sprintf("������ � ��-����� �� ���������� ����������� ������ - %s", $this->format_size($this->size)); 
+        $this->msg = sprintf("������ � ��-����� �� ���������� ����������� ������ - %s", $this->format_size($this->size));
     }
 
     public function __invoke()
     {
         if(func_num_args() == 0){
-            throw new \Exception(__FUNCTION__ .' insufficient parameters supplied',
+            throw new ValidationError(__FUNCTION__ .' insufficient parameters supplied',
                                  Validator::INSUFFICENT_PARAMETERS);
         }
         $field = func_get_arg(0);
