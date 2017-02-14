@@ -39,10 +39,14 @@ abstract class Base implements Validator
         return $bytes;
     }
 
-    public static function init()
+    public static function init($msg=null)
     {
         $cls_name = get_called_class();
-        return new $cls_name(func_get_args());
+        $cls = new $cls_name(func_get_args());
+        if(isset($msg)){
+            $cls->msg($msg);
+        }
+        return $cls;
     }
 
 }
