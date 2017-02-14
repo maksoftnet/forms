@@ -2,7 +2,7 @@
 namespace Jokuf\Form;
 
 
-class BaseForm implements \Iterator
+class BaseForm implements \Iterator, \Countable
 {
     public $attributes = array(
         'action' => false,
@@ -38,6 +38,11 @@ class BaseForm implements \Iterator
 
         $this->clean_files($files);
 
+    }
+
+    public function count()
+    {
+        return count($this->fields);
     }
 
     public function start() {
