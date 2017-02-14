@@ -142,11 +142,12 @@ abstract class Base implements Field
 
         $args = func_get_args();
 
-        if(version_compare(phpversion(), '5.6.0', '>=')){
-            return new $cls(...$args);
-        }
-        $reflect  = new \ReflectionClass($class);
-        return $reflect->newInstanceArgs($args);
+        #if(version_compare(phpversion(), '5.6.0', '>=')){
+        #    return new $cls(...$args);
+        #}
+        $reflect  = new \ReflectionClass($cls);
+        $instance = $reflect->newInstanceArgs($args);
+        return $instance;
     }
 }
 
