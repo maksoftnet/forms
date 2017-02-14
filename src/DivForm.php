@@ -12,14 +12,14 @@ class DivForm extends BaseForm
         $tmp = '';
         foreach ($this->fields as $field) {
             $tmp .= sprintf('  <div %s>', $this->class).PHP_EOL;
-            if($input_field->label){
-                $tmp .= '    <label for="'.$input_field->name.'">'.$input_field->label.'</label>'.PHP_EOL;
+            if($field->label){
+                $tmp .= '    <label for="'.$field->name.'">'.$field->label.'</label>'.PHP_EOL;
             }
 
             if(count($field->errors)){
                 $tmp .= $this->construct_errors($field->errors);
             }
-            $tmp .= (string) $input_field;
+            $tmp .= (string) $field;
             $tmp .= '  </div>'.PHP_EOL;
             if($input_field instanceof \Jokuf\Form\Field\File){
                 $this->_attr["enctype"] = "multipart/form-data";
