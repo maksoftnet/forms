@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . "/../vendor/autoload.php";
+use PHPUnit\Framework\TestCase;
 use \Jokuf\Form\Validators\FileTypeMatch;
 use \Jokuf\Form\Field\Files;
 use \Jokuf\Form\Exceptions\ValidationError;
@@ -72,7 +73,7 @@ class Input extends \Jokuf\Form\DivForm
 }
 
 
-class Validators extends PHPUnit_Framework_TestCase
+class Validators extends TestCase
 {
     public function setUp()
     {
