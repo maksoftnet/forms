@@ -11,7 +11,7 @@ before_install:
 - composer install --dev
  
 script:
-- ./vendor/bin/phpunit -c phpunit.xml --coverage-clover ./tests/reports/coverage.xml
+- php vendor/bin/phpunit tests/test.php --coverage-clover ./tests/reports/coverage.xml
  
 after_script:
 - php vendor/bin/coveralls -v
