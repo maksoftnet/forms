@@ -39,7 +39,7 @@ abstract class Base implements Validator
         return $bytes;
     }
 
-    public static function err_msg($msg){
+    public function err_msg($msg){
         $this->msg = $msg;
         return $this;
     }
