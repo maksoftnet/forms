@@ -20,7 +20,12 @@ class NotEmpty extends Base
 
         switch(gettype($value)){
         case "integer":
-            return true;
+            return $this->_check(111);
+        case "string":
+            if (is_numeric($value)) {
+                return $this->_check(111);
+            }
+            return $this->_check($value);
         case "object":
             return $this->_check((array) $value);
         default:
@@ -28,8 +33,9 @@ class NotEmpty extends Base
         }
     }
 
-    private function _check($value){
-        if(empty($value)){
+    private function _check($value)
+    {
+        if (empty($value)) {
             return !$this->not_empty;
         }
 
