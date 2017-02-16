@@ -66,6 +66,10 @@ abstract class Base implements Field
         return $this->data['errors'];
     }
 
+    public function get_errors(){
+        return $this->data['errors'];
+    }
+
     private function run_validators($valueToValidate){
         $errors = array();
 
@@ -76,7 +80,7 @@ abstract class Base implements Field
                 $e[] = $e->message();
             }
         }
-        if($errors){
+        if(count($errors) > 0){
             throw new ValidationError($errors, self::VALIDATOR_FAIL);
         }
     }

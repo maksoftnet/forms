@@ -13,13 +13,26 @@ class NotEmpty extends Base
     public function __invoke()
     {
         if(func_num_args() == 0){
-            $valie = null;
+            $value = null;
         } else {
             $value = func_get_arg(0);
         }
 
-        if(empty($value))
+        switch(gettype($value)){
+        case "integer":
+            return true;
+        case "object":
+            return $this->_check((array) $value);
+        default:
+            return $this->_check($value);
+        }
+    }
+
+    private function _check($value){
+        if(empty($value)){
             return !$this->not_empty;
+        }
+
         return $this->not_empty;
     }
 }

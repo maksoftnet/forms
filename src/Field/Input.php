@@ -1,6 +1,6 @@
 <?php
 namespace Jokuf\Form\Field;
-use Jokuf\Form\Exceptions\ValidationError;
+use \Jokuf\Form\Exceptions\ValidationError;
 
 
 class Input extends Base
@@ -27,7 +27,7 @@ class Input extends Base
     public function is_valid(){
         foreach ($this->__default_validators as $validator){
             try{
-                if(!$validator($this->data['value'])){
+                if($validator($this->data['value']) === false){
                     $this->data['errors'][] = $validator->msg;
                 }
             } catch (ValidationError $e){
@@ -36,7 +36,7 @@ class Input extends Base
         }
 
         if(count($this->data['errors']) > 0){
-            throw new ValidationError("validation filed" , 1);
+            throw new ValidationError($this->name . ' has error\n');
         }
 
         return True;

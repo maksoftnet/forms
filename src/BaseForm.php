@@ -1,5 +1,6 @@
 <?php
 namespace Jokuf\Form;
+use \Jokuf\Form\Exceptions\ValidationError;
 
 
 class BaseForm implements \Iterator, \Countable
@@ -90,13 +91,23 @@ class BaseForm implements \Iterator, \Countable
     {
         $this->clean_request($this->post);
 
+        $errors = array();
+
         foreach($this->fields as $field_name => $field){
-            $field->is_valid();
-            $custom_validator = sprintf("validate_%s", $field_name);
-            if(method_exists($field, $custom_validator)){
-                $field->$custom_validator($field->value);
+            try{
+                $field->is_valid();
+                $custom_validator = sprintf("validate_%s", $field_name);
+                if(method_exists($field, $custom_validator)){
+                    $field->$custom_validator($field->value);
+                }
+            } catch (ValidationError $e){
+                $errors[$field_name] = $e->getMessage();
             }
+
             $this->cleaned_data[$field_name] = $field->value;
+        }
+        if(count($errors) > 0){
+            throw new ValidationError("Errors in fields. Please iterate over them");
         }
 
         return true;

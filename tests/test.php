@@ -1,10 +1,118 @@
 <?php
 require __DIR__ . "/../vendor/autoload.php";
+
+
 use PHPUnit\Framework\TestCase;
-use \Jokuf\Form\Validators\FileTypeMatch;
-use \Jokuf\Form\Validators\NotEmpty;
-use \Jokuf\Form\Field\Files;
-use \Jokuf\Form\Exceptions\ValidationError;
+use Jokuf\Form\Validators\FileTypeMatch;
+use Jokuf\Form\Validators\NotEmpty;
+use Jokuf\Form\Field\Files;
+use Jokuf\Form\Exceptions\ValidationError;
+use Jokuf\Form\DivForm;
+use Jokuf\Form\Field\Text;
+use Jokuf\Form\Field\Hidden;
+use Jokuf\Form\Field\TextArea;
+use Jokuf\Form\Field\Submit;
+
+
+
+class NewComment extends DivForm
+{
+    public function __construct($post_data){
+
+        $this->author = Text::init()
+            ->add("label", "�����")
+            ->add("required", true)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("field author cannot be empty")
+            );
+
+        $this->email = Text::init()
+            ->add("label", "����� �����:")
+            ->add("required", true)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("field email cannot be empty")
+            );
+
+        $this->subject = Text::init()
+            ->add("label", "��������: ")
+            ->add("required", true)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("subject cannot be empty")
+            );
+
+        $this->text = Text::init()
+            ->add("label", "������ ��������: ")
+            ->add("required", true)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("text cannot be emptyt")
+            );
+
+        $this->parent = Hidden::init()
+            ->add("value", 0)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("parent cannot be empty")
+            );
+
+        $this->user_id = Hidden::init()
+            ->add("value", 0)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("user_id cannot be null")
+            );
+        $this->image  = Hidden::init();
+
+        $this->action = Hidden::init()
+            ->add("value", "insert_comment")
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("action must not be null")
+            );
+
+        $this->status = Hidden::init()
+            ->add("value", 0)
+            ->add_validator(
+                NotEmpty::init(true)
+                    ->err_msg("status must be set first")
+            );
+
+        parent::__construct($post_data);
+    }
+
+    public function validate_subject($field){
+        $this->subject->value = strip_tags($field->value);
+        return true;
+    }
+
+    public function validate_author($field){
+        $this->subject->value = strip_tags($field->value);
+        return true;
+    }
+
+    public function validate_text($field){
+        $this->subject->value = strip_tags($field->value, '<ul><li><div><ol><h1><h2><h3><h4><pre><code><p><em><strong><blockquote>');
+        return true;
+    }
+
+    public function save(){
+        $this->page->insertComment(
+            $this->n,
+            $this->subject->value,
+            $this->author->value,
+            $this->email->value,
+            $this->text->value,
+            $this->image->value,
+            "",
+            $this->user_id->value,
+            $this->parent->value,
+            $this->status->value
+        );
+    }
+}
 
 
 class TestForm extends \Jokuf\Form\DivForm
@@ -113,6 +221,29 @@ class Validators extends TestCase
                 'size' => array ( 0 => 267355, 1 => 51991, 2 => 273041,),)
             );
     }
+
+    /**
+     * @covers Jokuf\Form\Validators\NotEmpty::__invoke
+     */
+    public function test_newCommentForm(){
+        $form_data = array(
+            "author"  => "Radoslav",
+            "email"   => "iordanov_@mail.bg",
+            "subject" => "asd",
+            "text"    => "comment",
+            "parent"  => 0,
+            "user_id" => 1424,
+            "image"   => "asdlkjasdlkajslkas",
+            "status"  => 1,
+            "action"  => "insert_comment"
+        );
+
+        $save_comment = new NewComment($form_data);
+        $save_comment->is_valid(); 
+
+
+    }
+
     /**
      * @covers Jokuf\Form\Validators\NotEmpty::__invoke
      */
@@ -542,7 +673,6 @@ class Validators extends TestCase
     {
         $this->password->value = 'asda';
         $this->password->is_valid();
-        throw new \Exception('asd');
     }
 
     /**
