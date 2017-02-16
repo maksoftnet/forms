@@ -1,5 +1,9 @@
 # Make some abstraction over forms #
 
+[![Build
+Status](https://travis-ci.org/jokuf/forms.svg?branch=master)](https://travis-ci.org/jokuf/forms)
+[![Coverage
+Status](https://coveralls.io/repos/jokuf/forms/badge.svg?branch=master&service=github)](https://coveralls.io/github/jokuf/forms?branch=master)
 
 ### What is this repository for? ###
 

@@ -2,6 +2,7 @@
 require __DIR__ . "/../vendor/autoload.php";
 use PHPUnit\Framework\TestCase;
 use \Jokuf\Form\Validators\FileTypeMatch;
+use \Jokuf\Form\Validators\NotEmpty;
 use \Jokuf\Form\Field\Files;
 use \Jokuf\Form\Exceptions\ValidationError;
 
@@ -111,6 +112,15 @@ class Validators extends TestCase
                 'error' => array ( 0 => 0, 1 => 0, 2 => 0,),
                 'size' => array ( 0 => 267355, 1 => 51991, 2 => 273041,),)
             );
+    }
+    /**
+     * @covers Jokuf\Form\Validators\NotEmpty::__invoke
+     */
+    public function test_notEmpty_validator(){
+        $validator = NotEmpty::init(true);
+        $this->assertTrue($validator("asdasa"), "Проверява се дали полето не е empty, очаквана стойност boolean(True)");
+        $validator = NotEmpty::init(false);
+        $this->assertTrue($validator(), "Проверка дали полето е празно, очаквана стойност boolean(True)");
     }
 
     /**
