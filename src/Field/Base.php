@@ -100,7 +100,7 @@ abstract class Base implements Field
                 $element .= ' '.$htmlAttribute.' ';
                 continue;
             }
-            if(!is_null($value) && $value && $value !== '_'){
+            if(!is_null($value) &&  $value !== '_'){
                 $element .= $htmlAttribute.'="'.$value.'" ';
             }
         }

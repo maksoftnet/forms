@@ -815,4 +815,9 @@ class Validators extends TestCase
         $this->assertTrue($phone->is_valid(), "Валидира номера по регулярен израз и връща True ако е валиден");
     }
 
+    public function test_zero_value(){
+        $hidden = \Jokuf\Form\Field\Hidden::init()->add("value", 0);
+        $this->assertEquals("<input type=\"hidden\" value=\"0\" >", trim((string) $hidden));
+    }
+
 }
