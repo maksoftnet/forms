@@ -96,7 +96,7 @@ abstract class Base implements Field
         $element = "";
         foreach ($this->data as $htmlAttribute => $value){
             if(is_array($value)){ continue; }
-            if(is_bool($value) && $value){
+            if($value === true){
                 $element .= ' '.$htmlAttribute.' ';
                 continue;
             }
