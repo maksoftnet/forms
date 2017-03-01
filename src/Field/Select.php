@@ -35,11 +35,11 @@ class Select extends Input
         $options = '';
         $tmp = "select ";
         foreach ($this->data as $instance=>$value):
-            if(is_array($value)){
-                $options = $this->parse_options($this->options);
-            } else {
-                $tmp .= sprintf("%s=\"%s\" ", $instance, $value);
+            if( is_array($value)) {
+                $options = $this->parse_options($value);
+                continue;
             }
+            $tmp .= sprintf("%s=\"%s\" ", $instance, $value);
         endforeach;
         return "    <".$tmp." >".PHP_EOL.$options."    </select>".PHP_EOL;
     }
