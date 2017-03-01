@@ -94,14 +94,19 @@ abstract class Base implements Field
     public function create_field_attributes()
     {
         $element = "";
-        foreach ($this->data as $htmlAttribute => $value){
-            if(is_array($value)){ continue; }
-            if($value === true){
-                $element .= ' '.$htmlAttribute.' ';
-                continue;
-            }
-            if(!is_null($value) &&  $value !== '_'){
-                $element .= $htmlAttribute.'="'.$value.'" ';
+        foreach ($this->data as $htmlAttribute => $value) {
+            switch(true){
+                case is_array($value):
+                    break;
+                case $value === true:
+                    $element .= ' '.$htmlAttribute.' ';
+                    break;
+                case strtolower(trim($htmlAttribute)) === 'label':
+                    break; 
+                default:
+                    if (!is_null($value) &&  $value !== '_') {
+                        $element .= $htmlAttribute.'="'.$value.'" ';
+                    }
             }
         }
         return $element;
