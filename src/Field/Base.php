@@ -132,12 +132,14 @@ abstract class Base implements Field
         return array_key_exists($attribute, $this->data);
     }
 
-    public function getLabel()
+    public function getLabel($cls="")
     {
-        if($this->exist('label')){
-            return sprintf("<label for\"%s\">%s</label>", $this->data['name'], $this->data['label']);
+        if (!$this->exist('label')) {
+            return "";
         }
-        return "";
+        $pattern = "<label for\"%s\" class=\"%s\">%s</label>";
+
+        return sprintf($pattern, $this->data['name'], $this->data['label'], $cls);
     }
 
     public static function init()
