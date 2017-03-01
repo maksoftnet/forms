@@ -32,6 +32,9 @@ class BaseForm implements \Iterator, \Countable
         foreach(get_object_vars($this) as $instance=>$value){
             if($value instanceof \Jokuf\Form\Field\Base){
                 $value->name = $instance;
+                if(!isset($value->name)){
+                    $value->name=$instance;
+                }
                 $this->{$instance} = $value;
                 $this->fields[$instance] = $this->{$instance};
             }

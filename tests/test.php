@@ -828,7 +828,6 @@ class Validators extends TestCase
         );
         $radio = Radio::init()
                         ->add("choices", $data);
-        var_dump($radio->as_array());
         $this->assertCount(3, $radio->as_array(), "Проверява дали при зададени 3 чекбокса връща точно 3");
     }
 
