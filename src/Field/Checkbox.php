@@ -22,27 +22,35 @@ class Checkbox extends Input
 
     public function __toString()
     {
-        $options = '';
-        $tmp = "select ";
         $tmp = array();
-        $attributes = array();
-        $checkboxes = "";
-        foreach ($this->data as $instance=>$value){
-            if($instance == 'label'){
-                continue;
-            }
-            if(is_array($value)) {
-                $checkboxes = $value;
-                continue;
-            }
-            $attributes[] = sprintf("%s=\"%s\" ", $instance, $value);
+        foreach ($this->as_array() as $checkbox) {
+            $tmp[] = sprintf("<input %s value=\"%s\">%s ", $checkbox['attr'], $checkbox['value'], $checkbox['name']);
         }
 
-        $attributes = implode(" ", $attributes);
-        foreach($checkboxes as $checkbox_value => $checkbox_name){
-            $tmp[] = sprintf("<input %s value=\"%s\">%s ", $attributes, $checkbox_value, $checkbox_name);
-        }
         return implode("", $tmp);
+    }
+
+    public function as_array()
+    {
+        $tmp = array();
+        $checkboxes = "";
+        foreach ($this->data as $instance=>$value){
+            if(!is_array($value)){
+                continue;
+            }
+            $checkboxes = $value;
+            break;
+        }
+
+        $attributes = $this->create_field_attributes();
+        foreach ($checkboxes as $checkbox_value => $checkbox_name) {
+            $tmp[] = array(
+                "attr"   => $attributes,
+                "value" => $checkbox_value,
+                "name"  => $checkbox_name
+            );
+        }
+        return (empty($tmp) ? array(parent::__toString()) : $tmp);
     }
 }
 

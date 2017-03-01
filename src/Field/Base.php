@@ -91,7 +91,7 @@ abstract class Base implements Field
         return $this;
     }
 
-    protected function create_field_attributes()
+    public function create_field_attributes()
     {
         $element = "";
         foreach ($this->data as $htmlAttribute => $value){
@@ -107,7 +107,7 @@ abstract class Base implements Field
         return $element;
     }
 
-   public function has_changed($data, $initial){
+    public function has_changed($data, $initial){
         /*
          * Return True if data differs from initial
          */
