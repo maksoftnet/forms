@@ -9,6 +9,7 @@ use Jokuf\Form\Field\Files;
 use Jokuf\Form\Exceptions\ValidationError;
 use Jokuf\Form\DivForm;
 use Jokuf\Form\Field\Text;
+use Jokuf\Form\Field\Radio;
 use Jokuf\Form\Field\Hidden;
 use Jokuf\Form\Field\TextArea;
 use Jokuf\Form\Field\Checkbox;
@@ -814,6 +815,21 @@ class Validators extends TestCase
 
         $phone->value= "+35902/8464646";
         $this->assertTrue($phone->is_valid(), "Валидира номера по регулярен израз и връща True ако е валиден");
+    }
+    /**
+     * @covers Jokuf\Form\Field\Radio::as_array
+     */
+    public function test_radio_as_array_method()
+    {
+        $data = array(
+            "asdsad asd sad sa",
+            "asd asdas dasd ds",
+            "ads asdojsdklpoqeiqpwoe",
+        );
+        $radio = Radio::init()
+                        ->add("choices", $data);
+        var_dump($radio->as_array());
+        $this->assertCount(3, $radio->as_array(), "Проверява дали при зададени 3 чекбокса връща точно 3");
     }
 
     /**

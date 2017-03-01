@@ -15,8 +15,8 @@ class Radio extends Checkbox
 {
     public function __construct(array $kwargs=array())
     {
-        $this->data['type'] = 'radio';
         parent::__construct($kwargs);
+        $this->data['type'] = 'radio';
         return $this;
     }
 }
