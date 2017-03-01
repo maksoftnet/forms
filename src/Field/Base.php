@@ -139,7 +139,7 @@ abstract class Base implements Field
         }
         $pattern = "<label for\"%s\" class=\"%s\">%s</label>";
 
-        return sprintf($pattern, $this->data['name'], $this->data['label'], $cls);
+        return sprintf($pattern, $this->data['name'], $cls, $this->data['label']);
     }
 
     public static function init()
