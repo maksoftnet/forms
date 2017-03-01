@@ -35,11 +35,9 @@ class Checkbox extends Input
         $tmp = array();
         $checkboxes = "";
         foreach ($this->data as $instance=>$value){
-            if(!is_array($value)){
-                continue;
+            if(is_array($value)){
+                $checkboxes = $value;
             }
-            $checkboxes = $value;
-            break;
         }
 
         $attributes = $this->create_field_attributes();

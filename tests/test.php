@@ -11,6 +11,7 @@ use Jokuf\Form\DivForm;
 use Jokuf\Form\Field\Text;
 use Jokuf\Form\Field\Hidden;
 use Jokuf\Form\Field\TextArea;
+use Jokuf\Form\Field\Checkbox;
 use Jokuf\Form\Field\Submit;
 
 
@@ -815,9 +816,19 @@ class Validators extends TestCase
         $this->assertTrue($phone->is_valid(), "Валидира номера по регулярен израз и връща True ако е валиден");
     }
 
-    public function test_zero_value(){
-        $hidden = \Jokuf\Form\Field\Hidden::init()->add("value", 0);
-        $this->assertEquals("<input type=\"hidden\" value=\"0\" >", trim((string) $hidden));
+    /**
+     * @covers Jokuf\Form\Field\Checkbox::as_array
+     */
+    public function test_checkbox_as_array_method()
+    {
+        $data = array(
+            "asdsad asd sad sa",
+            "asd asdas dasd ds",
+            "ads asdojsdklpoqeiqpwoe",
+        );
+        $checkbox = Checkbox::init()
+                        ->add("choices", $data);
+        $this->assertCount(3, $checkbox->as_array(), "Проверява дали при зададени 3 чекбокса връща точно 3");
     }
 
 }
