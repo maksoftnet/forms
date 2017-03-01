@@ -25,6 +25,9 @@ class Input extends Base
      */
 
     public function is_valid(){
+        if(!isset($this->data['value'])){
+            $this->do_it_wrong($this->name . ' has error\n');
+        }
         foreach ($this->__default_validators as $validator){
             try{
                 if($validator($this->data['value']) === false){
@@ -36,7 +39,7 @@ class Input extends Base
         }
 
         if(count($this->data['errors']) > 0){
-            throw new ValidationError($this->name . ' has error\n');
+            $this->do_it_wrong($this->name . ' has error\n');
         }
 
         return True;
@@ -44,7 +47,8 @@ class Input extends Base
 
     public function __toString()
     {
-        return "    <".$this->type." ".$this->create_field_attributes().'>'.PHP_EOL;
+        $input = sprintf("<%s %s>", $this->type, $this->attributes());
+        return str_pad($input, 4, " ", STR_PAD_LEFT).PHP_EOL;
     }
 }
 

@@ -11,6 +11,7 @@ before_install:
  
 script:
 - php vendor/bin/phpunit tests/test.php --coverage-clover ./tests/reports/coverage.xml
+- php vendor/bin/phpunit tests/tests.php --coverage-clover ./tests/reports/coverage.xml
  
 after_script:
 - php vendor/bin/coveralls -v

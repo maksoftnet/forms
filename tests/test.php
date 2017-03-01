@@ -242,8 +242,6 @@ class Validators extends TestCase
 
         $save_comment = new NewComment($form_data);
         $save_comment->is_valid(); 
-
-
     }
 
     /**
@@ -271,6 +269,12 @@ class Validators extends TestCase
         $this->assertTrue($file_input_field->is_valid());
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\MaxLength::__invoke
+     * @covers Jokuf\Form\Validators\MinLength::__invoke
+     * @covers Jokuf\Form\Validators\HasDigit::__invoke
+     * @covers Jokuf\Form\Validators\HasUpperCase::__invoke
+     */
     public function test_mulitple_validators()
     {
         $password = Jokuf\Form\Field\Password::init()
@@ -369,12 +373,18 @@ class Validators extends TestCase
         $this->assertTrue($file_input_field->is_valid());
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\FileExtensionMatch::__invoke
+     */
     public function test_file_extension_assert_False()
     {
         $validator = new Jokuf\Form\Validators\FileExtensionMatch(".JPEG");
         $this->assertFalse($validator($this->file)); //file extension is jpg
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\FileExtensionMatch::__invoke
+     */
     public function test_file_extension_single_input_assert_True()
     {
         $file = array(
@@ -386,12 +396,19 @@ class Validators extends TestCase
         $this->assertTrue($validator($file)); //file extension is jpg
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\FileExtensionMatch::__invoke
+     */
     public function test_file_extenstion_multiple_assert_True()
     {
         $validator = new Jokuf\Form\Validators\FileExtensionMatch("JPEG", "png", "jpeg", "gif");
         $this->assertFalse($validator($this->file)); //file extension is jpg
     }
 
+
+    /**
+     * @covers Jokuf\Form\Validators\FileExtensionMatch::__invoke
+     */
     public function test_file_extenstion_multiple_assert_False()
     {
         $validator = new Jokuf\Form\Validators\FileExtensionMatch("JPEG", "png", "swf", "gif");
@@ -533,6 +550,7 @@ class Validators extends TestCase
 
     /**
      * @covers Jokuf\Form\Field\Filess::is_valid
+     * @covers Jokuf\Form\Validators\FileTypeMatch::__invoke
      */
     public function test_file_input_field_one_file_csv_true()
     {
@@ -551,6 +569,7 @@ class Validators extends TestCase
 
     /**
      * @covers Jokuf\Form\Field\Filess::is_valid
+     * @covers Jokuf\Form\Validators\FileTypeMatch::__invoke
      */
     public function test_file_input_field_one_file_not_csv_return_exception()
     {
@@ -573,6 +592,7 @@ class Validators extends TestCase
 
     /**
      * @covers Jokuf\Form\Field\Filess::is_valid
+     * @covers Jokuf\Form\Validators\FileTypeMatch::__invoke
      */
     public function test_multiple_files_input_filetype_validation_true()
     {
@@ -588,6 +608,10 @@ class Validators extends TestCase
     }
 
 
+    /**
+     * @covers Jokuf\Form\Field\Filess::is_valid
+     * @covers Jokuf\Form\Validators\FileNotBiggerThan::__invoke
+     */
     public function test_is_valid_with_no_files_attached()
     {
         $images = new Jokuf\Form\Field\Files(array(
@@ -609,6 +633,7 @@ class Validators extends TestCase
 
     /**
      * @covers Jokuf\Form\Field\Filess::is_valid
+     * @covers Jokuf\Form\Validators\FileTypeMatch::__invoke
      */
     public function test_multiple_files_input_filetype_validation_expect_exception()
     {
@@ -630,7 +655,9 @@ class Validators extends TestCase
     }
 
     /**
-     * @covers Jokuf\Form\Field\Filess::is_valid
+     * @covers Jokuf\Form\Field\Files::is_valid
+     * @covers Jokuf\Form\Field\Files::add_validator
+     * @covers Jokuf\Form\Validator\FileNotBiggerThan::__invoke
      */
     public function test_multiple_files_input_filesize_validator_expect_exception()
     {
@@ -704,9 +731,19 @@ class Validators extends TestCase
         $this->password->is_valid();
     }
 
-    public function testAddValidators_on_success()
+    /**
+     * @covers Jokuf\Form\Validators\HasSpecialChars::__invoke
+     * @covers Jokuf\Form\Validators\MaxLength::__invoke
+     * @covers Jokuf\Form\Validators\MinLength::__invoke
+     * @covers Jokuf\Form\Validators\HasDigit::__invoke
+     * @covers Jokuf\Form\Validators\HasUpperCase::__invoke
+     * @covers Jokuf\Form\Field\Password::is_valid
+     */
+    public function test_testAddValidators_on_success()
     {
-        $this->assertEquals($this->password->add_validator(new Jokuf\Form\Validators\HasSpecialChars('%&%*')), $this->password);
+        $this->password->add_validator(new Jokuf\Form\Validators\HasSpecialChars('%&%*'));
+        $this->password->value = "A3&n0A%%";
+        $this->assertTrue($this->password->is_valid());
     }
 
     public function test_Form_cleaned_fields_not_exist_extra_information_passed_to_form()
@@ -718,6 +755,9 @@ class Validators extends TestCase
         $this->assertNotEquals(json_encode($post), $form->save());
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Email::__invoke
+     */
     public function test_email_validator()
     {
         $email = "sales@Jokuf.bg";
@@ -726,13 +766,20 @@ class Validators extends TestCase
         $this->assertTrue($validator->is_valid());
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Email::__invoke
+     * @covers Jokuf\Form\BaseForm::is_valid()
+     */
     public function test_form_with_email()
     {
         $post = array("email" => "sales@Jokuf.bg", "SiteID" => '999');
-        $form = new TestFormEmail(array("SiteID"=>999));
+        $form = new TestFormEmail($post);
         $this->assertTrue(boolval($form->is_valid()));
     }
 
+    /**
+     * @covers Jokuf\Form\Validators\Integerish::__invoke
+     */
     public function test_validators_integerish_assert_true()
     {
         $validator = new \Jokuf\Form\Validators\Integerish();

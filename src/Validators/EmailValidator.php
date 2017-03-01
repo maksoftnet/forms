@@ -16,7 +16,7 @@ class EmailValidator extends Base
         }
         $email = func_get_arg(0);
         $this->msg = sprintf("����� �������, ����� ��� ������������(%s) � ���������.", $email);
-        return filter_var($email, FILTER_VALIDATE_EMAIL);
+        return boolval(filter_var($email, FILTER_VALIDATE_EMAIL));
     }
 
 }

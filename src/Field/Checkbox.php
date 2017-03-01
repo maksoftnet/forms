@@ -40,7 +40,7 @@ class Checkbox extends Input
             }
         }
 
-        $attributes = $this->create_field_attributes();
+        $attributes = $this->attributes();
         foreach ($checkboxes as $checkbox_value => $checkbox_name) {
             $tmp[] = array(
                 "attr"   => $attributes,

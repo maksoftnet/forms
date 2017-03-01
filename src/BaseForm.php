@@ -209,5 +209,28 @@ class BaseForm implements \Iterator, \Countable
         $key = key($this->fields);
         return ($key !== NULL && $key !== FALSE);
     }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function has_changed($data, $initial){
+        /*
+         * Return True if data differs from initial
+         */
+        try{
+            if(in_array('_coerce', get_class_methods($this)))
+                return ($this->_coerce($data) != $this->_coerce($initial)) ? True : False;
+        }catch (ValidationError $e){
+            return True;
+        }
+        /*
+         * For purposes of seeing weather something has changed, None is the same
+         * as an empty string, if the data or initial value we get is None, replace with '',
+         */
+        $initial_value = ($initial == null) ? '' : $initial;
+        $data_value = ($data == null) ? '' : $data;
+
+        return ($initial_value != $data_value) ? True : False;
+    }
 }
 ?>
