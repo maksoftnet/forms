@@ -50,7 +50,7 @@ class Checkbox extends Input
                 "name"  => $checkbox_name
             );
         }
-        return (empty($tmp) ? array(parent::__toString()) : $tmp);
+        return $tmp;
     }
 }
 
