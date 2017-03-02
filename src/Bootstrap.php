@@ -1,5 +1,5 @@
 <?php
-use Jokuf\Form\BaseForm;
+namespace Jokuf\Form;
 use Jokuf\Form\Field\Text;
 use Jokuf\Form\Field\Email;
 use Jokuf\Form\Field\Select;
