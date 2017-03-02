@@ -14,6 +14,7 @@ class BaseForm implements \Iterator, \Countable
     );
     protected $cleaned_data=array();
     protected $fields = array();
+    protected $base_field = array();
     protected $post = array();
 
     /**
@@ -34,7 +35,14 @@ class BaseForm implements \Iterator, \Countable
                 if(!isset($value->name)){
                     $value->name=$instance;
                 }
-                $this->fields[$instance] = $this->{$instance};
+                $this->fields[$instance] = $value;;
+
+                /*
+                 * Instances should always modify $this->fields; they should not
+                 * modify $this->fields
+                 */
+                $this->base_fields[$instance] = clone $value; 
+
             }
         }
 
@@ -83,7 +91,7 @@ class BaseForm implements \Iterator, \Countable
          */
 
         foreach($post_data as $key=>$value){
-            if(!array_key_exists($key, $this->fields)){ continue; }
+            if(!isset($this->fields[$key])){ continue; }
             $this->fields[$key]->value = $value;
         }
     }
@@ -97,8 +105,7 @@ class BaseForm implements \Iterator, \Countable
         foreach($this->fields as $field_name => $field){
             try{
                 $field->is_valid();
-                $custom_validator = sprintf("validate_%s", $field_name);
-                if(method_exists($field, $custom_validator)){
+                if(method_exists($field, sprintf("validate_%s", $field_name))){
                     $field->$custom_validator($field->value);
                 }
             } catch (ValidationError $e){
@@ -123,28 +130,31 @@ class BaseForm implements \Iterator, \Countable
     public function __toString()
     {
         $tmp = '';
-        foreach (get_object_vars($this) as $input_field):
-            if(is_object($input_field)):
-                $tmp.= (string) $input_field;
-            endif;
-        endforeach;
+        foreach ($this->fields as $field) {
+            if ($this->has_changed($field->name)) {
+                $old = $field;
+                $field = $this->base_fields[$old->name];
+                $field->value = $old->value;
+            }
+            $tmp.= (string) $field;
+        }
         return $tmp;
     }
 
-	public function save()
-	{
-        if(array_key_exists("csrf", $this->cleaned_data)){
+    public function save()
+    {
+        if (array_key_exists("csrf", $this->cleaned_data)) {
             unset($this->cleaned_data['csrf']);
         }
         return $this->cleaned_data;
-	}
+    }
 
     public function set_action($url){
         $this->attributes['action'] = $url;
     }
 
     public function get_action(){
-        if(!$this->attributes['action']){
+        if (!$this->attributes['action']) {
             return '';
         }
         return $this->attributes['action'];
@@ -211,24 +221,17 @@ class BaseForm implements \Iterator, \Countable
     /**
      * @codeCoverageIgnore
      */
-    public function has_changed($data, $initial){
+    public function has_changed($field_name){
         /*
          * Return True if data differs from initial
          */
         try{
-            if(in_array('_coerce', get_class_methods($this)))
-                return ($this->_coerce($data) != $this->_coerce($initial)) ? True : False;
+            if (isset($this->fields[$field_name])) {
+                return ($this->fields[$field_name]->value != $this->base_fields[$field_name]->value) ? true : false;
+            }
         }catch (ValidationError $e){
-            return True;
+            return true;
         }
-        /*
-         * For purposes of seeing weather something has changed, None is the same
-         * as an empty string, if the data or initial value we get is None, replace with '',
-         */
-        $initial_value = ($initial == null) ? '' : $initial;
-        $data_value = ($data == null) ? '' : $data;
-
-        return ($initial_value != $data_value) ? True : False;
     }
 }
 ?>
