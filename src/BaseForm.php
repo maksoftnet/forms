@@ -105,7 +105,8 @@ class BaseForm implements \Iterator, \Countable
         foreach($this->fields as $field_name => $field){
             try{
                 $field->is_valid();
-                if(method_exists($field, sprintf("validate_%s", $field_name))){
+                $custom_validator = sprintf("validate_%s", $field_name);
+                if (method_exists($field, $custom_validator)) {
                     $field->$custom_validator($field->value);
                 }
             } catch (ValidationError $e){
@@ -139,6 +140,11 @@ class BaseForm implements \Iterator, \Countable
             $tmp.= (string) $field;
         }
         return $tmp;
+    }
+
+    public function post($value)
+    {
+        $this->data['post'] = $value;
     }
 
     public function save()
