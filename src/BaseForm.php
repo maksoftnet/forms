@@ -106,8 +106,8 @@ class BaseForm implements \Iterator, \Countable
             try{
                 $field->is_valid();
                 $custom_validator = sprintf("validate_%s", $field_name);
-                if (method_exists($field, $custom_validator)) {
-                    $field->$custom_validator($field->value);
+                if (method_exists($this, $custom_validator)) {
+                    $this->$custom_validator($field);
                 }
             } catch (ValidationError $e){
                 $errors[$field_name] = $e->getMessage();
