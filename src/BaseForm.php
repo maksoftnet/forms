@@ -109,13 +109,13 @@ class BaseForm implements \Iterator, \Countable
                 if (method_exists($this, $custom_validator)) {
                     $this->$custom_validator($field);
                 }
+
+                $this->cleaned_data[$field_name] = $field->value;
             } catch (ValidationError $e){
                 $errors[$field_name] = $e->getMessage();
             }
-
-            $this->cleaned_data[$field_name] = $field->value;
         }
-        if(count($errors) > 0){
+        if (count($errors) > 0) {
             throw new ValidationError("Errors in fields. Please iterate over them");
         }
 
