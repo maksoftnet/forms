@@ -105,16 +105,22 @@ class BaseForm implements \Iterator, \Countable
         foreach($this->fields as $field_name => $field){
             try{
                 $field->is_valid();
+            } catch (ValidationError $e){
+                $errors[$field_name] = $e->getMessage();
+            }
+
+            try{
                 $custom_validator = sprintf("validate_%s", $field_name);
                 if (method_exists($this, $custom_validator)) {
                     $this->$custom_validator($field);
                 }
-
                 $this->cleaned_data[$field_name] = $field->value;
             } catch (ValidationError $e){
+                $field->errors[] = $e->getMessage();
                 $errors[$field_name] = $e->getMessage();
             }
         }
+
         if (count($errors) > 0) {
             throw new ValidationError("Errors in fields. Please iterate over them");
         }

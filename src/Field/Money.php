@@ -13,7 +13,7 @@ use Jokuf\Form\Exceptions\ValidationError;
   *
   * @since 1.0
   */
-class Integer extends Input
+class Money extends Input
 {
     public function __construct(array $kwargs=array())
     {
