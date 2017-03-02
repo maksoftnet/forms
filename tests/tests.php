@@ -8,7 +8,6 @@ use Jokuf\Form\Validators\NotEmpty;
 use Jokuf\Form\Validators\EmailValidator;
 use Jokuf\Form\Field\Files;
 use Jokuf\Form\Exceptions\ValidationError;
-use Jokuf\Form\DivForm;
 use Jokuf\Form\Field\Base;
 use Jokuf\Form\Field\Text;
 use Jokuf\Form\Field\Radio;
@@ -16,6 +15,24 @@ use Jokuf\Form\Field\Hidden;
 use Jokuf\Form\Field\TextArea;
 use Jokuf\Form\Field\Checkbox;
 use Jokuf\Form\Field\Submit;
+use Jokuf\Form\DivForm;
+
+
+class TestForm extends DivForm
+{
+    public function __construct($data=null)
+    {
+        $this->checkbox = Checkbox::init()
+                            ->add("name", "bulletin[]")
+                            ->add("data", array(
+                                            "choice 1",
+                                            "choice 2",
+                                            "choice 3"
+                                        )
+                                    );
+        parent::__construct($data);
+    } 
+}
 
 
 class InputFieldClassTest extends TestCase
@@ -126,5 +143,15 @@ class InputFieldClassTest extends TestCase
         $valid_email = 'iordanov_mail.bg';
         $this->assertFalse($validator($valid_email));
     }
+
+    public function test_checkbox_functionality()
+    {
+
+
+        $f = new TestForm();
+        echo $f;
+        #echo $checkbox;
+    }
+
 
 }

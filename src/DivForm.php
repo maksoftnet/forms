@@ -21,7 +21,7 @@ class DivForm extends BaseForm
             }
             $tmp .= (string) $field;
             $tmp .= '  </div>'.PHP_EOL;
-            if($input_field instanceof \Jokuf\Form\Field\File){
+            if($field instanceof \Jokuf\Form\Field\File){
                 $this->_attr["enctype"] = "multipart/form-data";
             }
         }
