@@ -3,13 +3,19 @@ namespace Jokuf\Form\Field;
 
 
  /**
-  * Class TextInput extends from Input
+  * Class Checkbox extends from Input
   *
-  * @param  this is type of the input field'
+  * @category Field
   *
-  * @author  Radoslav Yordanov cc@Jokuf.bg>
+  * @package Form
+  *
+  * @author Radoslav Yordanov <jokuf2010@gmail.com>
   *
   * @since 1.0
+  *
+
+  *
+
   */
 class Checkbox extends Input
 {
@@ -23,11 +29,37 @@ class Checkbox extends Input
     public function __toString()
     {
         $tmp = array();
+        $checked = false;
+
+        if(isset($this->data['post'])){
+            $checked = true;
+        }
         foreach ($this->as_array() as $checkbox) {
-            $tmp[] = sprintf("<input %s value=\"%s\">%s ", $checkbox['attr'], $checkbox['value'], $checkbox['name']);
+            $pre_select = "";
+            if($checked){
+                switch(true){
+                    case is_array($this->data['post']):
+                        if(in_array($this->data['value'], $this->data['post'])){
+                            $pre_select = "checked";
+                        }
+                        break;
+                    case $this->data['post'] == $this->data['value']:
+                        $pre_select = "checked";
+                        break;
+                    default:
+                        $pre_select = "";
+
+                }
+            }
+            $tmp[] = sprintf("<input %s value=\"%s\" %s>%s ", $checkbox['attr'], $checkbox['value'], $pre_select, $checkbox['name']);
         }
 
         return implode("", $tmp);
+    }
+
+    public function is_valid()
+    {
+
     }
 
     public function as_array()
@@ -35,7 +67,7 @@ class Checkbox extends Input
         $tmp = array();
         $checkboxes = "";
         foreach ($this->data as $instance=>$value){
-            if(is_array($value)){
+            if(is_array($value) and strtolower($instance) !== 'post'){
                 $checkboxes = $value;
             }
         }

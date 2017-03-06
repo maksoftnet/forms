@@ -146,8 +146,6 @@ class InputFieldClassTest extends TestCase
 
     public function test_checkbox_functionality()
     {
-
-
         $f = new TestForm(array("checkbox" => 'asdsa'));
         $f->is_valid();
         var_dump($f->has_changed('checkbox'));

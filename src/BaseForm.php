@@ -93,6 +93,7 @@ class BaseForm implements \Iterator, \Countable
         foreach($post_data as $key=>$value){
             if(!isset($this->fields[$key])){ continue; }
             $this->fields[$key]->value = $value;
+            $this->fields[$key]->post = $value;
         }
     }
 

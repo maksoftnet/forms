@@ -9,6 +9,7 @@ use Jokuf\Form\Field\Files;
 use Jokuf\Form\Exceptions\ValidationError;
 use Jokuf\Form\DivForm;
 use Jokuf\Form\Field\Text;
+use Jokuf\Form\Field\Integer;
 use Jokuf\Form\Field\Radio;
 use Jokuf\Form\Field\Hidden;
 use Jokuf\Form\Field\TextArea;
@@ -876,6 +877,17 @@ class Validators extends TestCase
         $radio = Radio::init()
                         ->add("choices", $data);
         $this->assertCount(3, $radio->as_array(), "Проверява дали при зададени 3 чекбокса връща точно 3");
+    }
+
+
+    /**
+     * @covers Jokuf\Form\Field\Integer::is_valid
+     * @expectedException Jokuf\Form\Exceptions\ValidationError
+     */
+    public function test_integer_field()
+    {
+        $this->assertTrue(Integer::init()->add("value", "123")->is_valid());
+        Integer::init()->add("value", "123a")->is_valid();
     }
 
     /**
