@@ -17,9 +17,10 @@ use Jokuf\Form\Field\Checkbox;
 use Jokuf\Form\Field\Submit;
 use Jokuf\Form\DivForm;
 use Jokuf\Form\BaseForm;
+use Jokuf\Form\Bootstrap;
 
 
-class TestForm extends BaseForm
+class TestForm extends Bootstrap
 {
     public function __construct($data=null)
     {

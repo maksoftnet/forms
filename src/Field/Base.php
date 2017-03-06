@@ -122,7 +122,7 @@ abstract class Base implements Field
                     break; 
                 default:
                     if (!is_null($value) &&  $value !== '_') {
-                        $attributes[] = sprintf("%s=\"%s\"", $htmlAttribute, $value);
+                        $attributes[$htmlAttribute] = sprintf("%s=\"%s\"", $htmlAttribute, $value);
                     }
             }
         }

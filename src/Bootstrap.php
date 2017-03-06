@@ -37,11 +37,11 @@ class Bootstrap extends BaseForm
             $tmp .= sprintf('  <div class="%s">', $this->class['div']).PHP_EOL;
 
             switch (true){
-                case $field instanceof Checkbox:
-                    $tmp .= $this->rend_checkbox($field); 
-                    break;
                 case $field instanceof Radio:
                     $tmp .= $this->rend_radio($field);
+                    break;
+                case $field instanceof Checkbox:
+                    $tmp .= $this->rend_checkbox($field); 
                     break;
                 case $field instanceof File:
                     $this->_attr["enctype"] = "multipart/form-data";
@@ -100,7 +100,7 @@ HERE;
             extract($radio);
             $str .= <<<HERE
     <label class="radio-inline">
-      <input $attr valuie="$value"">$name
+      <input $attr value="$value"">$name
     </label>
 HERE;
         }
