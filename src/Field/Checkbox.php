@@ -22,6 +22,7 @@ class Checkbox extends Input
     public function __construct(array $kwargs=array())
     {
         $this->data['type'] = 'checkbox';
+        $this->data['value'] = '';
         parent::__construct($kwargs);
         return $this;
     }
@@ -34,16 +35,19 @@ class Checkbox extends Input
         if(isset($this->data['post'])){
             $checked = true;
         }
+
         foreach ($this->as_array() as $checkbox) {
             $pre_select = "";
             if($checked){
                 switch(true){
                     case is_array($this->data['post']):
-                        if(in_array($this->data['value'], $this->data['post'])){
-                            $pre_select = "checked";
+                        foreach($this->data['post'] as $choice){
+                            if($checkbox['value'] == $choice){
+                                $pre_select = "checked";
+                            }
                         }
                         break;
-                    case $this->data['post'] == $this->data['value']:
+                    case $this->data['post'] == $checkbox['value']:
                         $pre_select = "checked";
                         break;
                     default:
@@ -57,17 +61,12 @@ class Checkbox extends Input
         return implode("", $tmp);
     }
 
-    public function is_valid()
-    {
-
-    }
-
     public function as_array()
     {
         $tmp = array();
         $checkboxes = "";
         foreach ($this->data as $instance=>$value){
-            if(is_array($value) and strtolower($instance) !== 'post'){
+            if(is_array($value) and !in_array(strtolower($instance), array('value', 'post'))){
                 $checkboxes = $value;
             }
         }

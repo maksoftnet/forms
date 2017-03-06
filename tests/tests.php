@@ -16,9 +16,10 @@ use Jokuf\Form\Field\TextArea;
 use Jokuf\Form\Field\Checkbox;
 use Jokuf\Form\Field\Submit;
 use Jokuf\Form\DivForm;
+use Jokuf\Form\BaseForm;
 
 
-class TestForm extends DivForm
+class TestForm extends BaseForm
 {
     public function __construct($data=null)
     {
@@ -146,9 +147,8 @@ class InputFieldClassTest extends TestCase
 
     public function test_checkbox_functionality()
     {
-        $f = new TestForm(array("checkbox" => 'asdsa'));
+        $f = new TestForm(array("checkbox" => array(0, 1)));
         $f->is_valid();
-        var_dump($f->has_changed('checkbox'));
         echo $f;
         #echo $checkbox;
     }

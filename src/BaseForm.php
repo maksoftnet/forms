@@ -138,12 +138,12 @@ class BaseForm implements \Iterator, \Countable
     public function __toString()
     {
         $tmp = '';
-        foreach ($this->fields as $field) {
-            if ($this->has_changed($field->name)) {
-                $old = $field;
-                $field = $this->base_fields[$old->name];
-                $field->value = $old->value;
-            }
+        foreach ($this->fields as $instance_name => $field) {
+            #if ($this->has_changed($instance_name)) {
+            #    $old = $field;
+            #    $field = $this->base_fields[$instance_name];
+            #    $field->value = $old->value;
+            #}
             $tmp.= (string) $field;
         }
         return $tmp;
