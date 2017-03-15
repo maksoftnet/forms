@@ -21,7 +21,7 @@ class Recaptcha extends Input
     public function __toString()
     {
         $script ='<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl='.$this->data['lang'].'"> </script>';
-        return "<div class=\"g-recaptcha\" data-sitekey=\"".$this->data['site_key']."\"></div>$secret";
+        return "<div class=\"g-recaptcha\" data-sitekey=\"".$this->data['site_key']."\"></div>".$script;
     }
 
     public function is_valid()
