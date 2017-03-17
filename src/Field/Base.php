@@ -144,7 +144,7 @@ abstract class Base implements Field
     /**
      * @codeCoverageIgnore
      */
-    public function getLabel($cls="")
+    public function getLabel(string $cls="")
     {
         echo PHP_EOL.'this method '.__FUNCTION__.' will be depreciate till end of march. Please use get_label'.PHP_EOL;
         return $this->get_label($cls);
@@ -153,7 +153,7 @@ abstract class Base implements Field
     /**
      * @codeCoverageIgnore
      */
-    public function get_label($cls="")
+    public function get_label(string $cls="")
     {
         if (!$this->exist('label')) {
             return "";
@@ -173,12 +173,7 @@ abstract class Base implements Field
 
         $args = func_get_args();
 
-        #if(version_compare(phpversion(), '5.6.0', '>=')){
-        #    return new $cls(...$args);
-        #}
-        $reflect  = new \ReflectionClass($cls);
-        $instance = $reflect->newInstanceArgs($args);
-        return $instance;
+        return new $cls(...$args);
     }
 
     public function do_it_wrong($text, $code=1)
