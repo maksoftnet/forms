@@ -17,6 +17,8 @@ class BaseForm implements \Iterator, \Countable
     protected $base_field = array();
     protected $post = array();
 
+    protected $is_bound = false;
+
     /**
      * Loops over each element in the defined object variables check if there is some private or protected
      * properties and add all of them in fields array.
@@ -28,85 +30,107 @@ class BaseForm implements \Iterator, \Countable
      * @return none
      */
 
-    public function __construct($post_data=null, $files=null){
-        $this->post = $post_data;
-        foreach(get_object_vars($this) as $instance=>$value){
-            if($value instanceof \Jokuf\Form\Field\Base){
-                if(!isset($value->name)){
+    public function __construct(array $data=null, array $files=null, array $initial=null)
+    {
+        $this->is_bound = ($data or $files ? true : false);
+        $this->data = ($data ? $data : array());
+        $this->initial = ($initial ? $initial : array());
+
+        $this->construct_fields(get_object_vars($this));
+
+        if (!$this->is_bound) {
+            $this->set_initial_field_data($this->initial);
+            return $this;
+        }
+        
+
+        $this->set_initial_field_data($this->data);
+    }
+
+    protected function construct_fields(array $fields)
+    {
+        foreach($fields as $instance => $value) {
+            if ($value instanceof \Jokuf\Form\Field\Base) {
+                if (!isset($value->name)) {
                     $value->name=$instance;
                 }
                 $this->fields[$instance] = $value;;
 
                 /*
-                 * Instances should always modify $this->fields; they should not
-                 * modify $this->fields
+                 * Instances should always modify fields; they should not
+                 * modify base_fields!!
                  */
                 $this->base_fields[$instance] = clone $value; 
 
             }
         }
-
-        $this->clean_files($files);
-
     }
 
-    public function count()
+
+    protected function set_initial_field_data(array $data)
     {
-        return count($this->fields);
-    }
-
-    public function start() {
-        $str = '';
-        foreach ($this->attributes as $attribute_name => $attribute_value){
-            if(!$attribute_value){ continue; }
-            $str .= sprintf("%s=\"%s\" ", $attribute_name, $attribute_value);
-        }
-        return sprintf("<form %s>", $str);
-    }
-
-    public function end() {
-        return "</form>";
-    }
-
-    protected function clean_files($files){
-        if(empty($files)){
-            return;
-        }
-
-        foreach($files as $file_input_name => $file_arr){
-            if(in_array($file_input_name, $this->fields)){
-                $this->fields[$file_input_name]->files = $file_arr;
+        foreach ($data as $key=>$value) {
+            if (!isset($this->fields[$key])) {
+                continue; 
             }
-        }
-        return;
-    }
-
-    protected function clean_request($post_data)
-    {
-        /*
-         * TODO
-         * array array_diff ( array $array1 , array $array2 [, array $... ] )
-         * Compares array1 against one or more other arrays and returns the
-         * values in array1 that are not present in any of the other arrays.
-         */
-
-        foreach($post_data as $key=>$value){
-            if(!isset($this->fields[$key])){ continue; }
             $this->fields[$key]->value = $value;
             $this->fields[$key]->post = $value;
         }
     }
 
+    /*
+     *  Is bound returns true if form is submitted
+     *
+     *
+     *  @return boolean
+     */
+    public function is_bound(): boolean
+    {
+        return $this->is_bound;
+    }
+
+    public function count(): int
+    {
+        return count($this->fields);
+    }
+
+    public function start(): string
+    {
+        $str = '';
+        foreach ($this->attributes as $attribute_name => $attribute_value) {
+            if (!$attribute_value) { continue; }
+            $str .= sprintf("%s=\"%s\" ", $attribute_name, $attribute_value);
+        }
+        return sprintf("<form %s>", $str);
+    }
+
+    public function end(): string
+    {
+        return "</form>";
+    }
+
+    protected function clean_files(array $files): BaseForm
+    {
+        if (empty($files)) {
+            return;
+        }
+
+        foreach ($files as $file_input_name => $file_arr) {
+            if (in_array($file_input_name, $this->fields)) {
+                $this->fields[$file_input_name]->files = $file_arr;
+            }
+        }
+        return $this;
+    }
+
     public function is_valid()
     {
-        $this->clean_request($this->post);
-
         $errors = array();
 
-        foreach($this->fields as $field_name => $field){
+        foreach ($this->fields as $field_name => $field) {
             try{
                 $field->is_valid();
-            } catch (ValidationError $e){
+            } catch (ValidationError $e) {
                 $errors[$field_name] = $e->getMessage();
             }
 
@@ -116,7 +140,7 @@ class BaseForm implements \Iterator, \Countable
                     $this->$custom_validator($field);
                 }
                 $this->cleaned_data[$field_name] = $field->value;
-            } catch (ValidationError $e){
+            } catch (ValidationError $e) {
                 $field->errors[] = $e->getMessage();
                 $errors[$field_name] = $e->getMessage();
             }
@@ -139,11 +163,6 @@ class BaseForm implements \Iterator, \Countable
     {
         $tmp = '';
         foreach ($this->fields as $instance_name => $field) {
-            #if ($this->has_changed($instance_name)) {
-            #    $old = $field;
-            #    $field = $this->base_fields[$instance_name];
-            #    $field->value = $old->value;
-            #}
             $tmp.= (string) $field;
         }
         return $tmp;
@@ -152,6 +171,7 @@ class BaseForm implements \Iterator, \Countable
     public function post($value)
     {
         $this->data['post'] = $value;
+        return $this;
     }
 
     public function save()
@@ -162,37 +182,37 @@ class BaseForm implements \Iterator, \Countable
         return $this->cleaned_data;
     }
 
-    public function set_action($url){
+    public function set_action($url) {
         $this->attributes['action'] = $url;
     }
 
-    public function get_action(){
+    public function get_action() {
         if (!$this->attributes['action']) {
             return '';
         }
         return $this->attributes['action'];
     }
 
-    public function set_method($method){
+    public function set_method($method) {
         $this->attributes['method'] = $method;
     }
 
-    public function get_method(){
+    public function get_method() {
         return $this->attributes['method'];
     }
 
-    public function set_name($name){
+    public function set_name($name) {
         $this->attributes['name'] = $name;
     }
 
-    public function get_name(){
-        if(empty($this->attributes['name'])){
+    public function get_name() {
+        if (empty($this->attributes['name'])) {
             return '';
         }
         return $this->attributes['name'];
     }
 
-    public function set_id($id){
+    public function set_id($id) {
         $this->attributes['id'] = $id;
     }
 
@@ -234,7 +254,7 @@ class BaseForm implements \Iterator, \Countable
     /**
      * @codeCoverageIgnore
      */
-    public function has_changed($field_name){
+    public function has_changed($field_name) {
         /*
          * Return True if data differs from initial
          */
@@ -242,7 +262,7 @@ class BaseForm implements \Iterator, \Countable
             if (isset($this->fields[$field_name])) {
                 return ($this->fields[$field_name]->value != $this->base_fields[$field_name]->value) ? true : false;
             }
-        }catch (ValidationError $e){
+        }catch (ValidationError $e) {
             return true;
         }
     }
