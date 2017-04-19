@@ -25,15 +25,12 @@ class Input extends Base
      */
 
     public function is_valid(){
-        if(!isset($this->data['value'])){
-            $this->do_it_wrong($this->name . ' has error\n');
-        }
         foreach ($this->__default_validators as $validator){
             try{
                 if($validator($this->data['value']) === false){
                     $this->data['errors'][] = $validator->msg;
                 }
-            } catch (ValidationError $e){
+            } catch (\Exception $e){
                 $this->data['errors'][] = $e->getMessage();
             }
         }

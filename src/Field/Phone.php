@@ -13,6 +13,8 @@ use Jokuf\Form\Exceptions\ValidationError;
   */
 class Phone extends Input
 {
+    public $err_msg = 'Invalid phone number provided';
+
     public function __construct(array $kwargs=array()){
         $this->data['type'] = 'tel';
         $this->data['pattern'] = "[0-9/+]{7,16}";
@@ -21,12 +23,12 @@ class Phone extends Input
     }
     public function is_valid()
     {
-        parent::is_valid();
         preg_match("/^[0-9\/+]{9,16}$/", $this->value, $output);
-        if(empty($output)){
-            throw new ValidationError("You provide invalid phone number! Try with code/number", 33);
+        if(count($output) < 1){
+            $this->data['errors'][] = $this->err_msg;
+            return false;
         }
-        return True;
+        return true;
     }
 }
 

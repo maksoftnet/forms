@@ -6,6 +6,7 @@ use Jokuf\Form\Exceptions\ValidationError;
 class EmailValidator extends Base
 {
     public function __construct(){
+        $this->msg = sprintf("����� �������, ����� ��� ������������(%s) � ���������.", $email);
     }
 
     public function  __invoke()
@@ -15,7 +16,6 @@ class EmailValidator extends Base
                                  Validator::INSUFFICENT_PARAMETERS);
         }
         $email = func_get_arg(0);
-        $this->msg = sprintf("����� �������, ����� ��� ������������(%s) � ���������.", $email);
         return boolval(filter_var($email, FILTER_VALIDATE_EMAIL));
     }
 

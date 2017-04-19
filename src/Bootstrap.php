@@ -60,11 +60,12 @@ class Bootstrap extends BaseForm
                 $tmp .= '</div>';
             }
         }
+        $form = $this->start().$tmp.PHP_EOL.$this->end().PHP_EOL;
+
         if($this->fieldset){
-            $form = "<form ".$this->get_id()." ".$this->_enctype." ".$this->get_method(). " ".$this->get_action() ." ". $this->get_name().">".PHP_EOL;
-            return "<fieldset>".$form.$tmp.PHP_EOL.'</fieldset></form>'.PHP_EOL;
+            return "<fieldset>".$form.'</fieldset></form>'.PHP_EOL;
         }
-        return $this->start().$tmp.PHP_EOL.$this->end().PHP_EOL;
+        return $form;
     }
 
     protected function rend_checkbox(Checkbox $field){

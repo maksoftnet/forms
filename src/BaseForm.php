@@ -55,6 +55,10 @@ class BaseForm implements \Iterator, \Countable
         return count($this->fields);
     }
 
+    public function add_attr($attr_name, $value){
+        $this->attributes[$attr_name] = $value;
+    }
+
     public function start() {
         $str = '';
         foreach ($this->attributes as $attribute_name => $attribute_value){
@@ -106,7 +110,7 @@ class BaseForm implements \Iterator, \Countable
         foreach($this->fields as $field_name => $field){
             try{
                 $field->is_valid();
-            } catch (ValidationError $e){
+            } catch (\Exception $e){
                 $errors[$field_name] = $e->getMessage();
             }
 
@@ -147,11 +151,6 @@ class BaseForm implements \Iterator, \Countable
             $tmp.= (string) $field;
         }
         return $tmp;
-    }
-
-    public function post($value)
-    {
-        $this->data['post'] = $value;
     }
 
     public function save()

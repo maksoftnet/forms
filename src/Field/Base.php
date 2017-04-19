@@ -25,8 +25,16 @@ abstract class Base implements Field
     /**  @var get all defined vars */
     protected $__default_validators = array();
 
+    public $err_msg;
+
     public function __construct()
     {
+        return $this;
+    }
+
+    public function default_error_msg($msg)
+    {
+        $this->err_msg = $msg;
         return $this;
     }
 
@@ -92,6 +100,13 @@ abstract class Base implements Field
      */
     public function get_errors(){
         return $this->data['errors'];
+    }
+
+    public function print_errors($parent="ul", $child="li")
+    {
+        if(count($this->data['errors']) < 1){ return; }
+        $errors = implode("</".$child."><".$child.">", $this->getErrors());
+        return sprintf("<%s><%s>%s</%s></%s>", $parent, $child, $errors, $child, $parent);
     }
 
 
