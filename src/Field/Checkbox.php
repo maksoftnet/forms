@@ -65,15 +65,19 @@ class Checkbox extends Input
     {
         $tmp = array();
         $checkboxes = "";
-        foreach ($this->data as $instance=>$value){
-            if(is_array($value) and !in_array(strtolower($instance), array('value', 'post'))){
+        foreach ($this->data as $instance=>$value) {
+            if (is_array($value) and !in_array(strtolower($instance), array('value', 'post'))) {
                 $checkboxes = $value;
             }
         }
 
         $attributes = $this->create_field_attributes();
+        $predefined_value = $this->data['value'];
         unset($attributes['value']);
         foreach ($checkboxes as $checkbox_value => $checkbox_name) {
+            if ($predefined_value == $checkbox_value) {
+                $attributes['checked'] = true;
+            }
             $tmp[] = array(
                 "attr"   => implode(" ", $attributes),
                 "value" => $checkbox_value,
