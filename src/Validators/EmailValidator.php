@@ -6,7 +6,7 @@ use Jokuf\Form\Exceptions\ValidationError;
 class EmailValidator extends Base
 {
     public function __construct(){
-        $this->msg = sprintf("����� �������, ����� ��� ������������(%s) � ���������.", $email);
+        $this->msg = "invalid email";
     }
 
     public function  __invoke()

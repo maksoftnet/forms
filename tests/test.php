@@ -256,6 +256,16 @@ class Validators extends TestCase
     }
 
     /**
+     * @covers Jokuf\Form\Field\Radio::__invoke
+     */
+    public function test_radio_field_can_be_preselected()
+    {
+        $field = Radio::init()->add('data', range(0, 10))->add('value', 4);
+        $msg = 'Проверявам дали радио бутон с value=4 е избран';
+        $this->assertTrue(false !== strpos((string) $field, '<input type="radio" value="4" selected>4', 0), $msg);
+    }
+
+    /**
      * @covers Jokuf\Form\Validators\FileBiggerThan::__invoke
      */
     public function test_not_bigger_than()
@@ -761,9 +771,8 @@ class Validators extends TestCase
      */
     public function test_email_validator()
     {
-        $email = "sales@Jokuf.bg";
-        $validator = new \Jokuf\Form\Field\Email();
-        $validator->value=$email;
+        $email = "jokuf2010@gmail.com";
+        $validator = Jokuf\Form\Field\Email::init()->add('value', $email);
         $this->assertTrue($validator->is_valid());
     }
 
@@ -842,7 +851,6 @@ class Validators extends TestCase
     }
     /**
      * @covers Jokuf\Form\Validators\PhoneField::__invoke
-     * @expectedException Jokuf\Form\Exceptions\ValidationError
      */
     public function test_PhoneField()
     {
@@ -852,14 +860,9 @@ class Validators extends TestCase
 
         $phone->value= "02/846464s6";
         $code = 0;
-        $phone->is_valid();
 
-        $this->assertEquals(33, $code);
-
-        $phone->value= "+35902/846464s6";
-        $code = 0;
-        $phone->is_valid();
-        $this->assertEquals(33, $code);
+        $this->assertFalse($phone->is_valid(), 'При въведен телефонен номер с буква в него is_valid връща False.
+Toва се прави с цел ако другите валидатори да могат да се изпълнят');
 
         $phone->value= "+35902/8464646";
         $this->assertTrue($phone->is_valid(), "Валидира номера по регулярен израз и връща True ако е валиден");

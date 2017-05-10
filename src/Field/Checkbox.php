@@ -35,36 +35,20 @@ class Checkbox extends Input
         if(isset($this->data['post'])){
             $checked = true;
         }
-
-        foreach ($this->as_array() as $checkbox) {
-            $pre_select = "";
-            if($checked){
-                switch(true){
-                    case is_array($this->data['post']):
-                        foreach($this->data['post'] as $choice){
-                            if($checkbox['value'] == $choice){
-                                $pre_select = "checked";
-                            }
-                        }
-                        break;
-                    case $this->data['post'] == $checkbox['value']:
-                        $pre_select = "checked";
-                        break;
-                    default:
-                        $pre_select = "";
-
-                }
+        $checkboxes;
+        foreach ($this->data as $instance=>$value) {
+            if (is_array($value) and !in_array(strtolower($instance), array('value', 'post'))) {
+                $checkboxes = $value;
             }
-            $tmp[] = sprintf("<input %s value=\"%s\" %s>%s ", $checkbox['attr'], $checkbox['value'], $pre_select, $checkbox['name']);
         }
-
-        return implode("", $tmp);
+        return $this->build_checkboxes($checkboxes);
     }
 
     public function as_array()
     {
         $tmp = array();
         $checkboxes = "";
+        $predefined_value = false;
         foreach ($this->data as $instance=>$value) {
             if (is_array($value) and !in_array(strtolower($instance), array('value', 'post'))) {
                 $checkboxes = $value;
@@ -72,11 +56,13 @@ class Checkbox extends Input
         }
 
         $attributes = $this->create_field_attributes();
-        $predefined_value = $this->data['value'];
+        if(isset($this->data['value']) and !is_array($this->data['value'])){
+            $predefined_value = $this->data['value'];
+        }
         unset($attributes['value']);
         foreach ($checkboxes as $checkbox_value => $checkbox_name) {
-            if ($predefined_value == $checkbox_value) {
-                $attributes['checked'] = true;
+            if ($predefined_value and $predefined_value == $checkbox_value) {
+                $attributes['checked'] = 'checked';
             }
             $tmp[] = array(
                 "attr"   => implode(" ", $attributes),
@@ -85,6 +71,47 @@ class Checkbox extends Input
             );
         }
         return $tmp;
+    }
+
+    protected function build_checkboxes($checkboxes)
+    {
+        $tmp = array();
+        foreach($checkboxes as $checkbox_value => $checkbox_description){
+            $tmp[] = $this->construct_checkbox($checkbox_value, $checkbox_description);
+        }
+        return implode('\n', $tmp);
+    }
+
+
+    protected function build_attributes()
+    {
+        $attributes = $this->create_field_attributes();
+        if (isset($attributes['value'])) {
+            unset($attributes['value']);
+        }
+
+        return implode(' ', $attributes);
+    }
+
+    protected function selected($value)
+    {
+        if(!isset($this->data['value'])){
+            return;
+        }
+        if(is_array($this->data['value']) or !$this->data['value']){
+            return;
+        }
+
+        if($value != $this->data['value']){
+            return;
+        }
+
+        return 'selected';
+    }
+
+    protected function construct_checkbox($value, $description)
+    {
+        return sprintf("<input %s value=\"%s\" %s>%s ", $this->build_attributes(), $value, $this->selected($value), $description);
     }
 }
 
