@@ -28,7 +28,7 @@ class BaseForm implements \Iterator, \Countable
      * @return none
      */
 
-    public function __construct($post_data=null, $files=null, $populate_form=array()){
+    public function __construct($post_data=null, $files=null, $initial=null){
         $this->post = $post_data;
         foreach(get_object_vars($this) as $instance=>$value){
             if($value instanceof \Jokuf\Form\Field\Base){
@@ -46,8 +46,12 @@ class BaseForm implements \Iterator, \Countable
             }
         }
 
+        if(!$initial or !is_array($initial)){
+            $initial = array();
+        }
+
         $this->clean_files($files);
-        $this->clean_request($populate_form);
+        $this->clean_request($initial);
 
     }
 
