@@ -20,7 +20,7 @@ use Jokuf\Form\BaseForm;
 use Jokuf\Form\Bootstrap;
 
 
-class TestForm extends Bootstrap
+class TestFormCheckboxes extends Bootstrap
 {
     public function __construct($data=null)
     {
@@ -145,14 +145,4 @@ class InputFieldClassTest extends TestCase
         $valid_email = 'iordanov_mail.bg';
         $this->assertFalse($validator($valid_email));
     }
-
-    public function test_checkbox_functionality()
-    {
-        $f = new TestForm(array("checkbox" => array(0, 1)));
-        $f->is_valid();
-        echo $f;
-        #echo $checkbox;
-    }
-
-
 }

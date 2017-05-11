@@ -29,12 +29,6 @@ class Checkbox extends Input
 
     public function __toString()
     {
-        $tmp = array();
-        $checked = false;
-
-        if(isset($this->data['post'])){
-            $checked = true;
-        }
         $checkboxes;
         foreach ($this->data as $instance=>$value) {
             if (is_array($value) and !in_array(strtolower($instance), array('value', 'post'))) {

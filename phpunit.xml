@@ -10,7 +10,9 @@
          forceCoversAnnotation="true">
     <testsuites>
         <testsuite name="unit">
-            <directory>tests/</directory>
+            <directory suffix="tests.php">tests/</directory>
+            <directory suffix="test.php">tests/</directory>
+            <directory suffix="TestBaseForm.php">tests/</directory>
         </testsuite>
     </testsuites>
 
