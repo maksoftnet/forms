@@ -73,7 +73,7 @@ class Checkbox extends Input
         foreach($checkboxes as $checkbox_value => $checkbox_description){
             $tmp[] = $this->construct_checkbox($checkbox_value, $checkbox_description);
         }
-        return implode('\n', $tmp);
+        return implode(' ', $tmp);
     }
 
 
